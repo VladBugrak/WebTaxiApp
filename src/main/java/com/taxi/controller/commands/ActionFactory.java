@@ -1,2 +1,4 @@
-package com.taxi.controller.commands;public class ActionFactory {
+package com.taxi.controller.commands;
+
+public class ActionFactory {
 }

@@ -1,2 +1,10 @@
-package com.taxi.controller.exceptions;public class WrongCommandException {
+package com.taxi.controller.exceptions;
+
+public class WrongCommandException extends RuntimeException {
+    public WrongCommandException(){
+        super();
+    }
+    public WrongCommandException(String command){
+        super(command);
+    }
 }
