@@ -6,7 +6,7 @@ public class Car {
     private String plateNumber;
     private String model;
     private Color color;
-    private CarCategory;
+    private CarCategory carCategory;
     private int capacity;
 
 

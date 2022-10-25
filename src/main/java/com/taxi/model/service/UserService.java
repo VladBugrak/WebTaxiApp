@@ -10,7 +10,7 @@ public interface UserService {
 
     List<User> getAllUsers();
 
-    Optional<User> getById(long id);
+    Optional<User> getById(int id);
 
     Optional<User> login(String email, String pass);
 

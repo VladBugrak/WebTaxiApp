@@ -4,9 +4,9 @@ import java.util.List;
 
 public interface GenericDao<T> extends AutoCloseable {
     T create (T entity);
-    T findById(long id);
+    T findById(int id);
     List<T> findAll();
     boolean update(T entity);
-    boolean delete(long id);
+    boolean delete(int id);
     void close();
 }

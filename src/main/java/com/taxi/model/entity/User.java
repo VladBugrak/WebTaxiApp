@@ -1,34 +1,54 @@
 package com.taxi.model.entity;
 
+import java.util.List;
 import java.util.Objects;
 
 public class User {
 
-    private long id;
+    private int id;
 
+    private String login;
     private String email;
     private String password;
     private String firstName;
     private String lastName;
 
+    private Role role = Role.GUEST;
+
     public User() {
     }
 
-    public User(long id, String email, String password, String firstName, String lastName) {
+    public enum Role {
+        GUEST,
+        USER,
+        ADMIN,
+        DRIVER;
+
+    }
+
+    public User(int id, String login, String email, String password, String firstName, String lastName) {
         this.id = id;
+        this.login = login;
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getEmail() {
@@ -67,8 +87,9 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
+                ", login='" + login + '\'' +
                 ", email='" + email + '\'' +
-               // ", password='" + password + '\'' +
+                //", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 '}';
@@ -80,14 +101,16 @@ public class User {
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         return id == user.id
-                && email.equals(user.email)
-                && password.equals(user.password)
-                && firstName.equals(user.firstName)
-                && lastName.equals(user.lastName);
+                && Objects.equals(login, user.login)
+                && Objects.equals(email, user.email)
+                && Objects.equals(password, user.password)
+                && Objects.equals(firstName, user.firstName)
+                && Objects.equals(lastName, user.lastName)
+                ;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, email, password, firstName, lastName);
+        return Objects.hash(id, login, email, password, firstName, lastName);
     }
 }

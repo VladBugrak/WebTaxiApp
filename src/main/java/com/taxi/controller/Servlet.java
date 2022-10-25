@@ -32,26 +32,27 @@ public class Servlet extends HttpServlet {
         processRequest(req, resp);
     }
 
-    private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        LOGGER.debug("Servlet processRequest");
-        response.setCharacterEncoding("UTF-8");
-        request.setCharacterEncoding("UTF-8");
-
-        String page ;
-
-        ActionFactory client = new ActionFactory();
-        Command command = client.defineCommand(request);
-        LOGGER.debug("Command ActionFactory page: "+command.getClass());
-        page = command.execute(request, response);
-        LOGGER.debug("Command return page: "+page);
-        if (page != null) {
-            if(page.contains("redirect")){
-                response.sendRedirect(page.replace(":redirect", ""));
-            }else {
-                request.getRequestDispatcher(page).forward(request, response);
-            }
-        }
+//        LOGGER.debug("Servlet processRequest");
+//        response.setCharacterEncoding("UTF-8");
+//        request.setCharacterEncoding("UTF-8");
+//
+//        String page ;
+//
+//        ActionFactory client = new ActionFactory();
+//        Command command = client.defineCommand(request);
+//        LOGGER.debug("Command ActionFactory page: "+command.getClass());
+//        page = command.execute(request, response);
+//        LOGGER.debug("Command return page: "+page);
+//        if (page != null) {
+//            if(page.contains("redirect")){
+//                response.sendRedirect(page.replace(":redirect", ""));
+//            }else {
+//                request.getRequestDispatcher(page).forward(request, response);
+//            }
+//        }
 
 
     }
+}
