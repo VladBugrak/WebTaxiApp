@@ -9,14 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ac6ee45-af90-4b8c-90f8-b8922338237b" name="Changes" comment="dao 1.0.3.1">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/GeolocationPointDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/GeolocationPointDaoImp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/entity/GeolocationPoint.java" afterDir="false" />
+    <list default="true" id="5ac6ee45-af90-4b8c-90f8-b8922338237b" name="Changes" comment="dao 1.0.3.2 Added GeolocationPoint class">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/taxi/controller/exceptions/NonUniqGeoPointException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/DaoFactoryAbst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/DaoFactoryAbst.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/FactoryDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/FactoryDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/entity/Adress.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/GeolocationPointDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/GeoPointDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/GeolocationPointDaoImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/GeoPointDaoImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/entity/GeolocationPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/entity/GeoPoint.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,7 +175,7 @@
       <workItem from="1666640899033" duration="10575000" />
       <workItem from="1666686912163" duration="7219000" />
       <workItem from="1666709596669" duration="8397000" />
-      <workItem from="1666726566104" duration="26713000" />
+      <workItem from="1666726566104" duration="31563000" />
     </task>
     <task id="LOCAL-00001" summary="dao 1.0.0">
       <created>1666736865878</created>
@@ -212,7 +212,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666796852157</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="dao 1.0.3.2 Added GeolocationPoint class">
+      <created>1666800540349</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1666800540349</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,6 +242,7 @@
     <MESSAGE value="dao 1.0.2 Checked all UserDaoImpl methods" />
     <MESSAGE value="dao 1.0.3 all methods in UserDaoImpl was tasted manually" />
     <MESSAGE value="dao 1.0.3.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="dao 1.0.3.1" />
+    <MESSAGE value="dao 1.0.3.2 Added GeolocationPoint class" />
+    <option name="LAST_COMMIT_MESSAGE" value="dao 1.0.3.2 Added GeolocationPoint class" />
   </component>
 </project>

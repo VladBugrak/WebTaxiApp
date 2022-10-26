@@ -2,17 +2,17 @@ package com.taxi.model.entity;
 
 import java.util.Objects;
 
-public class GeolocationPoint {
+public class GeoPoint {
 
     private int id;
     private String name;
     private Double latitude;
     private Double longitude;
 
-    public GeolocationPoint() {
+    public GeoPoint() {
     }
 
-    public GeolocationPoint(int id, String name, Double latitude, Double longitude) {
+    public GeoPoint(int id, String name, Double latitude, Double longitude) {
         this.id = id;
         this.name = name;
         this.latitude = latitude;
@@ -67,7 +67,7 @@ public class GeolocationPoint {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        GeolocationPoint that = (GeolocationPoint) o;
+        GeoPoint that = (GeoPoint) o;
         return id == that.id
                 && Objects.equals(name, that.name)
                 && Objects.equals(latitude, that.latitude)
