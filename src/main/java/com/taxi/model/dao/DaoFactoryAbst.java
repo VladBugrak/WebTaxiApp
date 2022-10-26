@@ -1,9 +1,12 @@
 package com.taxi.model.dao;
 
+import com.taxi.model.entity.GeolocationPoint;
+
 public abstract class DaoFactoryAbst {
     private static DaoFactoryAbst daoFactoryAbst;
 
     public abstract UserDao createUserDao();
+    public abstract GeolocationPointDao createGeolocationPointDao();
 
 
 

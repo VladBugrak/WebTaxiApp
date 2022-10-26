@@ -1,5 +1,7 @@
 package com.taxi.model.dao;
 
+import com.taxi.model.entity.GeolocationPoint;
+
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -7,6 +9,7 @@ import java.sql.SQLException;
 public class FactoryDao extends DaoFactoryAbst {
 
     private DataSource dataSource = ConnectionPoolHolder.getDataSource();
+
 
     private Connection getConnection(){
         try {
@@ -20,6 +23,13 @@ public class FactoryDao extends DaoFactoryAbst {
     public UserDao createUserDao() {
         return new UserDaoImpl(getConnection());
     }
+
+    @Override
+    public GeolocationPointDao createGeolocationPointDao() {
+        return new GeolocationPointDaoImp(getConnection());
+    }
+
+
 
 
 }
