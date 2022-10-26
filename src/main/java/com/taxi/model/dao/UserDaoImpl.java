@@ -22,7 +22,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public User create(User user) {
 
-        String query = """
+        String query = """                    
                             INSERT into users 
                             ( 
                             login, 
@@ -30,7 +30,7 @@ public class UserDaoImpl implements UserDao {
                             firstName, 
                             lastName, 
                             email
-                            ) VALUES(?, ?, ?, ?, ?)
+                            ) VALUES(?, ?, ?, ?, ?);
                 """;
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
@@ -48,7 +48,7 @@ public class UserDaoImpl implements UserDao {
 
             if (resultSet.next()) {
                 user.setId(resultSet.getInt(1));
-                user.setRoleList(obtainUserRoles(user));
+//                user.setRoleList(obtainUserRoles(user));
                 return user;
             } else {
                 return null;
@@ -98,7 +98,7 @@ public class UserDaoImpl implements UserDao {
 
             if (resultSet.next()) {
                User user = extractUserFromResultSet(resultSet);
-               user.setRoleList(obtainUserRoles(user));
+            //   user.setRoleList(obtainUserRoles(user));
 
                 return user;
 
@@ -127,7 +127,7 @@ public class UserDaoImpl implements UserDao {
             User user;
             while (resultSet.next()){
                user = extractUserFromResultSet(resultSet);
-               user.setRoleList(obtainUserRoles(user));
+//               user.setRoleList(obtainUserRoles(user));
                userList.add(user);
             }
             return userList;
@@ -150,8 +150,8 @@ public class UserDaoImpl implements UserDao {
                 password=?, 
                 firstName=?, 
                 lastName=?, 
-                email=?,          
-                where id=?;
+                email=?          
+                where id=?
                 """;
 
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)){
@@ -162,6 +162,8 @@ public class UserDaoImpl implements UserDao {
             preparedStatement.setString( 4, user.getLastName());
             preparedStatement.setString( 5, user.getEmail());
             preparedStatement.setLong(6, user.getId());
+
+//            return preparedStatement.execute();
 
             return preparedStatement.executeUpdate()>0;
 
@@ -174,16 +176,16 @@ public class UserDaoImpl implements UserDao {
     @Override
     public boolean delete(int id) {
 
-        String query = """
+        String query = """           
                DELETE from users 
-               where id=?
+               where id=?;
                 """;
 
 
 
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)){
 
-            preparedStatement.setLong(1, id);
+            preparedStatement.setInt(1, id);
             return preparedStatement.executeUpdate()>0;
 
         } catch (SQLException e) {
@@ -212,7 +214,7 @@ public class UserDaoImpl implements UserDao {
 
             if(resultSet.next()) {
                 user = extractUserFromResultSet(resultSet);
-                user.setRoleList(obtainUserRoles(user));
+//                user.setRoleList(obtainUserRoles(user));
 
                 return user;
             } else {
@@ -227,7 +229,7 @@ public class UserDaoImpl implements UserDao {
 
     public List<Role> obtainUserRoles(User user){
 
-        String query = """          
+        String query = """    
                 select
                 roles.id,
                 roles.name
