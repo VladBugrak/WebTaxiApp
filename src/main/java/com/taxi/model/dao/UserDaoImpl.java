@@ -48,7 +48,7 @@ public class UserDaoImpl implements UserDao {
 
             if (resultSet.next()) {
                 user.setId(resultSet.getInt(1));
-//                user.setRoleList(obtainUserRoles(user));
+                user.setRoleList(obtainUserRoles(user));
                 return user;
             } else {
                 return null;
@@ -98,7 +98,7 @@ public class UserDaoImpl implements UserDao {
 
             if (resultSet.next()) {
                User user = extractUserFromResultSet(resultSet);
-            //   user.setRoleList(obtainUserRoles(user));
+               user.setRoleList(obtainUserRoles(user));
 
                 return user;
 
@@ -127,7 +127,7 @@ public class UserDaoImpl implements UserDao {
             User user;
             while (resultSet.next()){
                user = extractUserFromResultSet(resultSet);
-//               user.setRoleList(obtainUserRoles(user));
+               user.setRoleList(obtainUserRoles(user));
                userList.add(user);
             }
             return userList;
@@ -163,8 +163,8 @@ public class UserDaoImpl implements UserDao {
             preparedStatement.setString( 5, user.getEmail());
             preparedStatement.setLong(6, user.getId());
 
-//            return preparedStatement.execute();
 
+            user.setRoleList(obtainUserRoles(user));
             return preparedStatement.executeUpdate()>0;
 
         } catch (SQLException e) {
@@ -214,7 +214,7 @@ public class UserDaoImpl implements UserDao {
 
             if(resultSet.next()) {
                 user = extractUserFromResultSet(resultSet);
-//                user.setRoleList(obtainUserRoles(user));
+                user.setRoleList(obtainUserRoles(user));
 
                 return user;
             } else {

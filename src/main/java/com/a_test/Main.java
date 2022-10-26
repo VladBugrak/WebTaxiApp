@@ -19,8 +19,8 @@ public class Main {
         User user;
 
 //        //public User create(User user) {
-//        User user = new User();
-//        user.setLogin("user8");
+//        user = new User();
+//        user.setLogin("user12");
 //        user.setPassword("1111");
 //        user.setFirstName("Ivan");
 //        user.setLastName("Susanin");
@@ -28,15 +28,16 @@ public class Main {
 //        System.out.println(user.toString());
 //        user = userDaoImp.create(user);
 //        System.out.println(user.toString());
+//        for(Role role:user.getRoleList()){
+//            System.out.println(role.toString());
+//        }
 
 
-
-//        user = userDaoImp.findById(17);
+//        user = userDaoImp.findById(23);
 //        System.out.println(user.toString());
-//        user.setEmail("new email");
-//        userDaoImp.update(user);
-//        user = userDaoImp.findById(17);
-//        System.out.println(user.toString());
+//        for (Role role : user.getRoleList()) {
+//            System.out.println(role.toString());
+//        }
 
 
 
@@ -44,23 +45,41 @@ public class Main {
 //        List<User>  userList = userDaoImp.findAll();
 //        for(User user1:userList){
 //            System.out.println(user1.toString());
+//            for (Role role : user1.getRoleList()) {
+//                System.out.println(role.toString());
+//            }
+//        }
+
+//        //userDaoImp.update()
+//        user = userDaoImp.findById(23);
+//        System.out.println(user.toString());
+//        user.setEmail("new email 2");
+//        userDaoImp.update(user);
+//        System.out.println(user.toString());
+//        for (Role role : user.getRoleList()) {
+//            System.out.println(role.toString());
 //        }
 
 
-//        userDaoImp.delete(14);
 
 
-//        user = userDaoImp.findByLoginPassword("admin","123456");
-//        System.out.println(user.toString());
+//        userDaoImp.delete(6);
 
-        user = userDaoImp.findById(1);
 
-        List<Role> roleList = new ArrayList<>();
-        roleList = userDaoImp.obtainUserRoles(user);
-
-        for(Role role:roleList){
+        user = userDaoImp.findByLoginPassword("admin","123456");
+        System.out.println(user.toString());
+        for (Role role : user.getRoleList()) {
             System.out.println(role.toString());
         }
+
+
+
+//        user = userDaoImp.findById(1);
+//        List<Role> roleList = new ArrayList<>();
+//        roleList = userDaoImp.obtainUserRoles(user);
+//        for(Role role:roleList){
+//            System.out.println(role.toString());
+//        }
 
 
 

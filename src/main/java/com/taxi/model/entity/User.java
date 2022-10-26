@@ -1,5 +1,6 @@
 package com.taxi.model.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -13,12 +14,14 @@ public class User {
     private String firstName;
     private String lastName;
 
-    private List<Role> roleList;
+    private List<Role> roleList = new ArrayList<Role>();
 
 
 
     public User() {
     }
+
+
 
 
 
