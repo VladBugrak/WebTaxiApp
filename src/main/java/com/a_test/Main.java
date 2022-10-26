@@ -1,8 +1,7 @@
 package com.a_test;
 
-import com.taxi.model.dao.FactoryDao;
-import com.taxi.model.dao.GeoPointDao;
-import com.taxi.model.dao.UserDao;
+import com.taxi.model.dao.*;
+import com.taxi.model.entity.CarCategory;
 import com.taxi.model.entity.GeoPoint;
 import com.taxi.model.entity.User;
 
@@ -13,7 +12,50 @@ public class Main {
 
     public static void main(String[] args) {
 
+        FactoryDao factoryDao = new FactoryDao();
+        CarCategoryDao carCategoryDaoImp = factoryDao.createCarCategoryDao();
 
+        CarCategory carCategory = new CarCategory();
+
+
+//        //create
+//        carCategory.setName("made in ussr2");
+//        carCategory.setNameUA("зроблено СРСР");
+//
+//        System.out.println(carCategory.toString());
+//        carCategoryDaoImp.create(carCategory);
+//        System.out.println(carCategory.toString());
+
+//
+//        //findById
+//        carCategory = carCategoryDaoImp.findById(1);
+//        System.out.println(carCategory.toString());
+
+//        //findAll()
+//        List<CarCategory> carCategoryList = new ArrayList<>();
+//        carCategoryList = carCategoryDaoImp.findAll();
+//        for(CarCategory carCategory1:carCategoryList){
+//            System.out.println(carCategory1.toString());
+//        }
+
+
+//        //update
+//        carCategory = carCategoryDaoImp.findById(5);
+//        System.out.println(carCategory.toString());
+//        carCategory.setNameUA("Зроблено в СРСР");
+//        carCategoryDaoImp.update(carCategory);
+//        System.out.println(carCategory.toString());
+
+
+        carCategoryDaoImp.delete(5);
+
+
+
+
+
+    }
+
+    public void test_GeoPointDaoImp(){
         FactoryDao factoryDao = new FactoryDao();
         GeoPointDao geoPointDaoImp = factoryDao.createGeoPointDao();
 
@@ -49,7 +91,6 @@ public class Main {
 //        System.out.println(geoPoint.toString());
 
         geoPointDaoImp.delete(3);
-
 
 
     }

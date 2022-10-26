@@ -46,8 +46,11 @@ public class CarCategoryDaoImp implements CarCategoryDao{
         } catch (SQLIntegrityConstraintViolationException e) {
             StringBuffer stringBuffer = new StringBuffer();
             stringBuffer
-                    .append("Car category  with name = \"")
+                    .append("Either car category  with name = \"")
                     .append(carCategory.getName())
+                    .append("\" already exist")
+                    .append(" or car category  with nameUA = \"")
+                    .append(carCategory.getNameUA())
                     .append("\" already exist")
                     ;
 
@@ -86,7 +89,12 @@ public class CarCategoryDaoImp implements CarCategoryDao{
                 CarCategory carCategory = extractCarCategoryFromResultSet(resultSet);
                 return carCategory;
             } else {
-                return null;
+                StringBuffer stringBuffer = new StringBuffer();
+                stringBuffer
+                        .append("The CarCategory object with id =")
+                        .append(id)
+                        .append(" does not exist in the data base.");
+                throw  new ObjectNotFoundException(stringBuffer.toString());
             }
 
         } catch (SQLException e) {
@@ -136,7 +144,7 @@ public class CarCategoryDaoImp implements CarCategoryDao{
                 UPDATE car_category 
                 SET 
                 name=?,
-                name_ua=?,                   
+                name_ua=?                   
                 where id=?
                 """;
 
@@ -147,6 +155,7 @@ public class CarCategoryDaoImp implements CarCategoryDao{
 
             preparedStatement.setString(1,carCategory.getName());
             preparedStatement.setString(2,carCategory.getNameUA());
+            preparedStatement.setInt(3,carCategory.getId());
 
 
             return preparedStatement.executeUpdate()>0;
@@ -159,6 +168,16 @@ public class CarCategoryDaoImp implements CarCategoryDao{
 
     @Override
     public boolean delete(int id) {
+
+        if(findById(id) == null){
+
+            StringBuffer stringBuffer = new StringBuffer();
+            stringBuffer
+                    .append("The CarCategory object with id =")
+                    .append(id)
+                    .append(" does not exist in the data base. So you can't delete it");
+            throw  new ObjectNotFoundException(stringBuffer.toString());
+        }
 
         String query = """           
                DELETE from car_category 

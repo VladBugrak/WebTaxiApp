@@ -164,6 +164,18 @@ public class GeoPointDaoImp implements GeoPointDao {
 
     @Override
     public boolean delete(int id) {
+
+        if(findById(id) == null){
+
+            StringBuffer stringBuffer = new StringBuffer();
+            stringBuffer
+                    .append("The GeoPoint object with id =")
+                    .append(id)
+                    .append(" does not exist in the data base. So you can't delete it");
+            throw  new ObjectNotFoundException(stringBuffer.toString());
+        }
+
+
         String query = """           
                DELETE from geolocation_point 
                where id=?;

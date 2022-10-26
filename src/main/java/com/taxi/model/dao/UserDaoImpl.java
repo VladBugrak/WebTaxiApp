@@ -187,6 +187,16 @@ public class UserDaoImpl implements UserDao {
     @Override
     public boolean delete(int id) {
 
+        if(findById(id) == null){
+
+            StringBuffer stringBuffer = new StringBuffer();
+            stringBuffer
+                    .append("The User object with id =")
+                    .append(id)
+                    .append(" does not exist in the data base. So you can't delete it");
+            throw  new ObjectNotFoundException(stringBuffer.toString());
+        }
+
         String query = """           
                DELETE from users 
                where id=?;
