@@ -13,6 +13,16 @@ public class Main {
 
     public static void main(String[] args) {
 
+
+
+
+
+
+
+
+    }
+
+    public void test_UserDaoImpl(){
         FactoryDao factoryDao = new FactoryDao();
         UserDao userDaoImp = factoryDao.createUserDao();
 
@@ -66,11 +76,11 @@ public class Main {
 //        userDaoImp.delete(6);
 
 
-        user = userDaoImp.findByLoginPassword("admin","123456");
-        System.out.println(user.toString());
-        for (Role role : user.getRoleList()) {
-            System.out.println(role.toString());
-        }
+//        user = userDaoImp.findByLoginPassword("admin","123456");
+//        System.out.println(user.toString());
+//        for (Role role : user.getRoleList()) {
+//            System.out.println(role.toString());
+//        }
 
 
 
@@ -81,12 +91,7 @@ public class Main {
 //            System.out.println(role.toString());
 //        }
 
-
-
-
-
-
-
     }
+
 
 }

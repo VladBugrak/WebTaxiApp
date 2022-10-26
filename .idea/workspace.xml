@@ -9,13 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ac6ee45-af90-4b8c-90f8-b8922338237b" name="Changes" comment="dao 1.0.2 Checked all UserDaoImpl methods">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="5ac6ee45-af90-4b8c-90f8-b8922338237b" name="Changes" comment="dao 1.0.3 all methods in UserDaoImpl was tasted manually">
       <change beforePath="$PROJECT_DIR$/src/main/java/com/a_test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/a_test/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/UserDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/entity/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/entity/Car.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/entity/Color.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/entity/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +169,7 @@
       <workItem from="1666640899033" duration="10575000" />
       <workItem from="1666686912163" duration="7219000" />
       <workItem from="1666709596669" duration="8397000" />
-      <workItem from="1666726566104" duration="24680000" />
+      <workItem from="1666726566104" duration="24835000" />
     </task>
     <task id="LOCAL-00001" summary="dao 1.0.0">
       <created>1666736865878</created>
@@ -197,7 +192,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666793305411</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="dao 1.0.3 all methods in UserDaoImpl was tasted manually">
+      <created>1666796671385</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1666796671385</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,6 +220,7 @@
     <MESSAGE value="dao 1.0.0" />
     <MESSAGE value="dao 1.0.1" />
     <MESSAGE value="dao 1.0.2 Checked all UserDaoImpl methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="dao 1.0.2 Checked all UserDaoImpl methods" />
+    <MESSAGE value="dao 1.0.3 all methods in UserDaoImpl was tasted manually" />
+    <option name="LAST_COMMIT_MESSAGE" value="dao 1.0.3 all methods in UserDaoImpl was tasted manually" />
   </component>
 </project>
