@@ -27,7 +27,11 @@ public class FactoryDao extends DaoFactoryAbst {
         return new GeoPointDaoImp(getConnection());
     }
 
+    @Override
+    public UserRoleDao createUserRoleDao() {return new UserRoleDaoImp(getConnection());  }
 
+    @Override
+    public CarCategoryDao createCarCategoryDao() {return new CarCategoryDaoImp(getConnection());}
 
 
 }

@@ -6,7 +6,9 @@ public abstract class DaoFactoryAbst {
     public abstract UserDao createUserDao();
     public abstract GeoPointDao createGeoPointDao();
 
+    public abstract UserRoleDao createUserRoleDao();
 
+    public abstract CarCategoryDao createCarCategoryDao();
 
     public static DaoFactoryAbst getInstance(){
         if( daoFactoryAbst == null ){

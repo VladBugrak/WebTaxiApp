@@ -2,7 +2,7 @@ package com.taxi.model.dao;
 
 import com.taxi.controller.exceptions.ObjectNotFoundException;
 import com.taxi.controller.exceptions.NotUniqUserException;
-import com.taxi.model.entity.Role;
+import com.taxi.model.entity.UserRole;
 import com.taxi.model.entity.User;
 
 import java.sql.*;
@@ -238,7 +238,7 @@ public class UserDaoImpl implements UserDao {
         }
     }
 
-    public List<Role> obtainUserRoles(User user){
+    public List<UserRole> obtainUserRoles(User user){
 
         String query = """    
                 select
@@ -253,8 +253,8 @@ public class UserDaoImpl implements UserDao {
                 where
                 user_roles.user_id = ?
                 """;
-        Role role;
-        List<Role> roleList = new ArrayList<>();
+        UserRole userRole;
+        List<UserRole> userRoleList = new ArrayList<>();
 
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)){
 
@@ -262,14 +262,14 @@ public class UserDaoImpl implements UserDao {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()){
-                role = new Role(
+                userRole = new UserRole(
                         resultSet.getInt(1),
                         resultSet.getString(2)
                 );
-                roleList.add(role);
+                userRoleList.add(userRole);
             }
 
-            return roleList;
+            return userRoleList;
 
         } catch (SQLException e) {
             e.printStackTrace();

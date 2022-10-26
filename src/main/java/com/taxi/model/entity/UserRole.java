@@ -2,15 +2,15 @@ package com.taxi.model.entity;
 
 import java.util.Objects;
 
-public class Role {
+public class UserRole {
 
     private int id;
     private String name;
 
-    public Role() {
+    public UserRole() {
     }
 
-    public Role(int id, String name) {
+    public UserRole(int id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -43,8 +43,8 @@ public class Role {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Role role = (Role) o;
-        return id == role.id && Objects.equals(name, role.name);
+        UserRole userRole = (UserRole) o;
+        return id == userRole.id && Objects.equals(name, userRole.name);
     }
 
     @Override

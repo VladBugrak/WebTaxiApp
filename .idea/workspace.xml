@@ -9,16 +9,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ac6ee45-af90-4b8c-90f8-b8922338237b" name="Changes" comment="dao 1.0.3.3 finished GeoPointDaoImp methods. Haven't test them  yet.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/taxi/controller/exceptions/NonExistentObjectModificationAttemptException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/CarDao.java" afterDir="false" />
+    <list default="true" id="5ac6ee45-af90-4b8c-90f8-b8922338237b" name="Changes" comment="dao 1.0.3.4 I have tested all GeoPointDaoImp methods.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/CarCategoryDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/CarCategoryDaoImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/UserRoleDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/UserRoleDaoImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/a_test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/a_test/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/DaoFactoryAbst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/DaoFactoryAbst.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/FactoryDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/FactoryDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/GeoPointDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/GeoPointDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/GeoPointDaoImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/GeoPointDaoImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/UserDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/UserDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/entity/CarCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/entity/CarCategory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/entity/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/entity/UserRole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/entity/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,8 +31,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -177,7 +180,7 @@
       <workItem from="1666640899033" duration="10575000" />
       <workItem from="1666686912163" duration="7219000" />
       <workItem from="1666709596669" duration="8397000" />
-      <workItem from="1666726566104" duration="36295000" />
+      <workItem from="1666726566104" duration="39638000" />
     </task>
     <task id="LOCAL-00001" summary="dao 1.0.0">
       <created>1666736865878</created>
@@ -228,7 +231,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666805867374</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="dao 1.0.3.4 I have tested all GeoPointDaoImp methods.">
+      <created>1666814641386</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1666814641386</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,14 +263,15 @@
     <MESSAGE value="dao 1.0.3.1" />
     <MESSAGE value="dao 1.0.3.2 Added GeolocationPoint class" />
     <MESSAGE value="dao 1.0.3.3 finished GeoPointDaoImp methods. Haven't test them  yet." />
-    <option name="LAST_COMMIT_MESSAGE" value="dao 1.0.3.3 finished GeoPointDaoImp methods. Haven't test them  yet." />
+    <MESSAGE value="dao 1.0.3.4 I have tested all GeoPointDaoImp methods." />
+    <option name="LAST_COMMIT_MESSAGE" value="dao 1.0.3.4 I have tested all GeoPointDaoImp methods." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/taxi/model/dao/GeoPointDaoImp.java</url>
-          <line>22</line>
+          <line>20</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
