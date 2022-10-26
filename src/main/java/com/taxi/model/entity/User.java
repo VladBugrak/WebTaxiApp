@@ -13,18 +13,14 @@ public class User {
     private String firstName;
     private String lastName;
 
-    private Role role = Role.GUEST;
+    private List<Role> roleList;
+
+
 
     public User() {
     }
 
-    public enum Role {
-        GUEST,
-        USER,
-        ADMIN,
-        DRIVER;
 
-    }
 
     public User(int id, String login, String email, String password, String firstName, String lastName) {
         this.id = id;
@@ -107,6 +103,14 @@ public class User {
                 && Objects.equals(firstName, user.firstName)
                 && Objects.equals(lastName, user.lastName)
                 ;
+    }
+
+    public List<Role> getRoleList() {
+        return roleList;
+    }
+
+    public void setRoleList(List<Role> roleList) {
+        this.roleList = roleList;
     }
 
     @Override

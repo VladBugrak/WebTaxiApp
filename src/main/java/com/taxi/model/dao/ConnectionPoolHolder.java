@@ -6,7 +6,7 @@ import javax.sql.DataSource;
 
 public class ConnectionPoolHolder {
 
-    final static String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+    final static String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
     final static String DB_URL = "jdbc:mysql://localhost:3306/taxi_db";
     final static String DB_USER = "root";
     final static String DB_PASSWORD = "root";
@@ -27,7 +27,7 @@ public class ConnectionPoolHolder {
                         basicDataSource.setMinIdle(5);
                         basicDataSource.setMaxIdle(10);
                         basicDataSource.setMaxOpenPreparedStatements(100);
-                        basicDataSource.setDefaultAutoCommit(false);
+                        //basicDataSource.setDefaultAutoCommit(false);
                         dataSource = basicDataSource;
                     }
                 }
