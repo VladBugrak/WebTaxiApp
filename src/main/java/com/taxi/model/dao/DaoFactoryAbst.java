@@ -4,7 +4,7 @@ public abstract class DaoFactoryAbst {
     private static DaoFactoryAbst daoFactoryAbst;
 
     public abstract UserDao createUserDao();
-    public abstract GeoPointDao createGeolocationPointDao();
+    public abstract GeoPointDao createGeoPointDao();
 
 
 

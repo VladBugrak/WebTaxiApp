@@ -23,7 +23,7 @@ public class FactoryDao extends DaoFactoryAbst {
     }
 
     @Override
-    public GeoPointDao createGeolocationPointDao() {
+    public GeoPointDao createGeoPointDao() {
         return new GeoPointDaoImp(getConnection());
     }
 

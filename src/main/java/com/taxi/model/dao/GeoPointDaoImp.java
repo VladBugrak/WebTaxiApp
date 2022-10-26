@@ -1,9 +1,8 @@
 package com.taxi.model.dao;
 
+import com.taxi.controller.exceptions.ObjectNotFoundException;
 import com.taxi.controller.exceptions.NonUniqGeoPointException;
-import com.taxi.controller.exceptions.NotUniqUserException;
 import com.taxi.model.entity.GeoPoint;
-import com.taxi.model.entity.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -125,20 +124,35 @@ public class GeoPointDaoImp implements GeoPointDao {
 
     @Override
     public boolean update(GeoPoint geoPoint) {
+
+        if(findById(geoPoint.getId()) == null){
+
+            StringBuffer stringBuffer = new StringBuffer();
+            stringBuffer
+                    .append("The GeoPoint object with id =")
+                    .append(geoPoint.getId())
+                    .append(" does not exist in the data base. So you can't update it");
+            throw  new ObjectNotFoundException(stringBuffer.toString());
+        }
+
         String query = """
                 UPDATE geolocation_point 
                 SET 
                 name=?,
                 latitude=?, 
-                longitude=?,       
+                longitude=?       
                 where id=?
                 """;
 
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)){
 
+
+
+
             preparedStatement.setString(1,geoPoint.getName());
             preparedStatement.setDouble(2,geoPoint.getLatitude());
             preparedStatement.setDouble(3,geoPoint.getLongitude());
+            preparedStatement.setDouble(4,geoPoint.getId());
 
             return preparedStatement.executeUpdate()>0;
 

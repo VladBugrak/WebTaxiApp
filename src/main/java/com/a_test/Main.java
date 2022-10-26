@@ -1,9 +1,9 @@
 package com.a_test;
 
 import com.taxi.model.dao.FactoryDao;
+import com.taxi.model.dao.GeoPointDao;
 import com.taxi.model.dao.UserDao;
-import com.taxi.model.dao.UserDaoImpl;
-import com.taxi.model.entity.Role;
+import com.taxi.model.entity.GeoPoint;
 import com.taxi.model.entity.User;
 
 import java.util.ArrayList;
@@ -14,9 +14,41 @@ public class Main {
     public static void main(String[] args) {
 
 
+        FactoryDao factoryDao = new FactoryDao();
+        GeoPointDao geoPointDaoImp = factoryDao.createGeoPointDao();
+
+        GeoPoint geoPoint = new GeoPoint();
 
 
+//        //create
+//        geoPoint.setName("Test");
+//        geoPoint.setLatitude(0.0);
+//        geoPoint.setLongitude(0.0);
+//        System.out.println(geoPoint.toString());
+//        geoPointDaoImp.create(geoPoint);
+//        System.out.println(geoPoint.toString());
 
+
+//        //findById
+//        geoPoint = geoPointDaoImp.findById(3);
+//        System.out.println(geoPoint.toString());
+
+//        List<GeoPoint> geoPointList = new ArrayList<>();
+//        geoPointList = geoPointDaoImp.findAll();
+//        for(GeoPoint geoPoint1:geoPointList){
+//            System.out.println(geoPoint1.toString());
+//        }
+
+//        //update(GeoPoint geoPoint)
+//        geoPoint =geoPointDaoImp.findById(1);
+//        geoPoint.setLatitude(3.0);
+//        geoPoint.setLongitude(3.0);
+//        System.out.println(geoPoint.toString());
+//        geoPoint.setName("geoPoint 1");
+//        geoPointDaoImp.update(geoPoint);
+//        System.out.println(geoPoint.toString());
+
+        geoPointDaoImp.delete(3);
 
 
 

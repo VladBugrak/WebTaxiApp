@@ -1,5 +1,6 @@
 package com.taxi.model.dao;
 
+import com.taxi.controller.exceptions.ObjectNotFoundException;
 import com.taxi.controller.exceptions.NotUniqUserException;
 import com.taxi.model.entity.Role;
 import com.taxi.model.entity.User;
@@ -142,6 +143,16 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public boolean update(User user) {
+
+        if(findById(user.getId()) == null){
+
+            StringBuffer stringBuffer = new StringBuffer();
+            stringBuffer
+                    .append("The User object with id =")
+                    .append(user.getId())
+                    .append(" does not exist in the data base. So you can't update it");
+            throw  new ObjectNotFoundException(stringBuffer.toString());
+        }
 
         String query = """
                 UPDATE users 
