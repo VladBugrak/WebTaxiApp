@@ -6,13 +6,15 @@ public class UserRole {
 
     private int id;
     private String name;
+    private String nameUA;
 
     public UserRole() {
     }
 
-    public UserRole(int id, String name) {
+    public UserRole(int id, String name, String nameUA) {
         this.id = id;
         this.name = name;
+        this.nameUA = nameUA;
     }
 
     public int getId() {
@@ -31,11 +33,20 @@ public class UserRole {
         this.name = name;
     }
 
+    public String getNameUA() {
+        return nameUA;
+    }
+
+    public void setNameUA(String nameUA) {
+        this.nameUA = nameUA;
+    }
+
     @Override
     public String toString() {
-        return "Role{" +
+        return "UserRole{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", nameUA='" + nameUA + '\'' +
                 '}';
     }
 
@@ -44,11 +55,11 @@ public class UserRole {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserRole userRole = (UserRole) o;
-        return id == userRole.id && Objects.equals(name, userRole.name);
+        return id == userRole.id && Objects.equals(name, userRole.name) && Objects.equals(nameUA, userRole.nameUA);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name);
+        return Objects.hash(id, name, nameUA);
     }
 }

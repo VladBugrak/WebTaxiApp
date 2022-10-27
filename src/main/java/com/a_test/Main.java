@@ -12,6 +12,12 @@ public class Main {
 
     public static void main(String[] args) {
 
+
+
+
+    }
+
+    public void test_CarCategoryImp(){
         FactoryDao factoryDao = new FactoryDao();
         CarCategoryDao carCategoryDaoImp = factoryDao.createCarCategoryDao();
 
@@ -91,8 +97,6 @@ public class Main {
 //        System.out.println(geoPoint.toString());
 
         geoPointDaoImp.delete(3);
-
-
     }
 
     public void test_UserDaoImpl(){
