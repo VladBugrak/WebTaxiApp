@@ -62,4 +62,9 @@ public class UserRole {
     public int hashCode() {
         return Objects.hash(id, name, nameUA);
     }
+
+    public void print(){
+        System.out.println(toString());
+    }
+
 }

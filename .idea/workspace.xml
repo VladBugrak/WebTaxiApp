@@ -9,9 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ac6ee45-af90-4b8c-90f8-b8922338237b" name="Changes" comment="dao 1.0.3.7 I have checked all the methods in CarCategoryDaoImp">
+    <list default="true" id="5ac6ee45-af90-4b8c-90f8-b8922338237b" name="Changes" comment="dao 1.0.3.8 Implemented all UserRoleDao's  interface methods in UserRoleDaoImp class. Neither of them was checked">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/a_test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/a_test/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/UserDaoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/UserRoleDaoImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/UserRoleDaoImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/entity/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/entity/UserRole.java" afterDir="false" />
     </list>
@@ -172,7 +173,7 @@
       <workItem from="1666640899033" duration="10575000" />
       <workItem from="1666686912163" duration="7219000" />
       <workItem from="1666709596669" duration="8397000" />
-      <workItem from="1666726566104" duration="47956000" />
+      <workItem from="1666726566104" duration="51157000" />
     </task>
     <task id="LOCAL-00001" summary="dao 1.0.0">
       <created>1666736865878</created>
@@ -251,7 +252,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666825389834</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="dao 1.0.3.8 Implemented all UserRoleDao's  interface methods in UserRoleDaoImp class. Neither of them was checked">
+      <created>1666869629927</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1666869629927</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -280,6 +288,7 @@
     <MESSAGE value="dao 1.0.3.5" />
     <MESSAGE value="dao 1.0.3.6 added CarCategoryDaoImp methods. Haven't checked them yet" />
     <MESSAGE value="dao 1.0.3.7 I have checked all the methods in CarCategoryDaoImp" />
-    <option name="LAST_COMMIT_MESSAGE" value="dao 1.0.3.7 I have checked all the methods in CarCategoryDaoImp" />
+    <MESSAGE value="dao 1.0.3.8 Implemented all UserRoleDao's  interface methods in UserRoleDaoImp class. Neither of them was checked" />
+    <option name="LAST_COMMIT_MESSAGE" value="dao 1.0.3.8 Implemented all UserRoleDao's  interface methods in UserRoleDaoImp class. Neither of them was checked" />
   </component>
 </project>

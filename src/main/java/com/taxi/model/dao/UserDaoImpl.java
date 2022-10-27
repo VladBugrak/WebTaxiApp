@@ -250,41 +250,10 @@ public class UserDaoImpl implements UserDao {
 
     public List<UserRole> obtainUserRoles(User user){
 
-        String query = """    
-                select
-                roles.id,
-                roles.name
-                from
-                taxi_db.roles as roles
-                inner join
-                taxi_db.users_roles as user_roles
-                on
-                user_roles.role_id =  roles.id
-                where
-                user_roles.user_id = ?
-                """;
-        UserRole userRole;
-        List<UserRole> userRoleList = new ArrayList<>();
+        FactoryDao factoryDao = new FactoryDao();
+        UserRoleDao userRoleDao = factoryDao.createUserRoleDao();
+        return userRoleDao.findAll();
 
-        try(PreparedStatement preparedStatement = connection.prepareStatement(query)){
-
-            preparedStatement.setInt(1,user.getId());
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            while (resultSet.next()){
-                userRole = new UserRole(
-                        resultSet.getInt(1),
-                        resultSet.getString(2)
-                );
-                userRoleList.add(userRole);
-            }
-
-            return userRoleList;
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        }
     }
 
 

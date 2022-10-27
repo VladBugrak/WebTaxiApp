@@ -99,7 +99,7 @@ public class UserRoleDaoImp implements UserRoleDao{
                     stringBuffer
                             .append("The UserRole object with id =")
                             .append(id)
-                            .append(" does not exist in the data base.");
+                            .append(" does not exist in the database.");
                     throw new ObjectNotFoundException(stringBuffer.toString());
                 } else {
                     return null;
@@ -144,7 +144,7 @@ public class UserRoleDaoImp implements UserRoleDao{
             stringBuffer
                     .append("The UserRole object with id =")
                     .append(userRole.getId())
-                    .append(" does not exist in the data base. So you can't update it");
+                    .append(" does not exist in the database. So you can't update it");
             throw  new ObjectNotFoundException(stringBuffer.toString());
         }
 
@@ -182,7 +182,7 @@ public class UserRoleDaoImp implements UserRoleDao{
             stringBuffer
                     .append("The UserRole object with id =")
                     .append(id)
-                    .append(" does not exist in the data base. So you can't delete it");
+                    .append(" does not exist in the database. So you can't delete it");
             throw  new ObjectNotFoundException(stringBuffer.toString());
         }
 

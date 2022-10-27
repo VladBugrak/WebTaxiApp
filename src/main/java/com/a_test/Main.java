@@ -4,6 +4,7 @@ import com.taxi.model.dao.*;
 import com.taxi.model.entity.CarCategory;
 import com.taxi.model.entity.GeoPoint;
 import com.taxi.model.entity.User;
+import com.taxi.model.entity.UserRole;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,60 @@ public class Main {
 
 
 
+
+
+
+    }
+
+    public void test_UserRoleDaoImp(){
+        FactoryDao factoryDao = new FactoryDao();
+        UserRoleDao userRoleDao = factoryDao.createUserRoleDao();
+
+        UserRole userRole;
+
+//        //create
+//        userRole = new UserRole();
+//        userRole.setName("accountant");
+//        userRole.setNameUA("бухгалтер");
+//        System.out.println(userRole.toString());
+//        userRoleDao.create(userRole);
+//        System.out.println(userRole.toString());
+
+//        //findById
+//        userRole = userRoleDao.findById(8);
+//        userRole.print();
+
+
+//        //findAll
+//        List<UserRole> userRoleList = new ArrayList<>();
+//        userRoleList = userRoleDao.findAll();
+//        for(UserRole userRole1:userRoleList){
+//            userRole1.print();
+//        }
+
+
+//        //update
+//        userRole = userRoleDao.findById(1);
+//        userRole.print();
+//        userRole.setName("superadmin");
+//        userRole.setNameUA("суперадмін");
+//        userRoleDao.update(userRole);
+//        userRole.print();
+
+//        //update nonexistence role
+//        userRole = new UserRole();
+//        userRole.setId(99);
+//        userRole.setName("99 role");
+//        userRole.setNameUA("99 роль");
+//        userRole.print();
+//        userRole.setName("superadmin");
+//        userRole.setNameUA("суперадмін");
+//        userRoleDao.update(userRole);
+//        userRole.print();
+
+
+        //delete
+        userRoleDao.delete(5);
     }
 
     public void test_CarCategoryImp(){
