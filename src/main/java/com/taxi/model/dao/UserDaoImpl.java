@@ -70,7 +70,7 @@ public class UserDaoImpl implements UserDao {
     }
 
 
-    public static User extractUserFromResultSet(ResultSet resultSet) throws SQLException {
+    private User extractUserFromResultSet(ResultSet resultSet) throws SQLException {
 
         User user = new User();
         user.setId(resultSet.getInt("id"));
@@ -250,12 +250,11 @@ public class UserDaoImpl implements UserDao {
         }
     }
 
-    public List<Role> obtainUserRoles(User user){
-
+    public List<Role> obtainUserRoles(User user) {
         FactoryDao factoryDao = new FactoryDao();
-        RoleDao roleDao = factoryDao.createRoleDao();
-        return roleDao.findAll();
-
+        UserRoleDao userRoleDao = factoryDao.createUserRoleDao();
+        List<Role> roleList = userRoleDao.getAllUserRoles(user);
+        return  roleList;
     }
 
 

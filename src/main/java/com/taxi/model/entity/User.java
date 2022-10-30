@@ -88,11 +88,15 @@ public class User {
                 "id=" + id +
                 ", login='" + login + '\'' +
                 ", email='" + email + '\'' +
-                //", password='" + password + '\'' +
+                ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", roleList=" + roleList +
                 '}';
     }
+
+
+
 
     @Override
     public boolean equals(Object o) {
