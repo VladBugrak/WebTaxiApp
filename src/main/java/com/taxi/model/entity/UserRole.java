@@ -4,50 +4,31 @@ import java.util.Objects;
 
 public class UserRole {
 
-    private int id;
-    private String name;
-    private String nameUA;
+    private User user;
+    private Role role;
 
     public UserRole() {
     }
 
-    public UserRole(int id, String name, String nameUA) {
-        this.id = id;
-        this.name = name;
-        this.nameUA = nameUA;
+    public UserRole(User user, Role role) {
+        this.user = user;
+        this.role = role;
     }
 
-    public int getId() {
-        return id;
+    public User getUser() {
+        return user;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public String getName() {
-        return name;
+    public Role getRole() {
+        return role;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getNameUA() {
-        return nameUA;
-    }
-
-    public void setNameUA(String nameUA) {
-        this.nameUA = nameUA;
-    }
-
-    @Override
-    public String toString() {
-        return "UserRole{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", nameUA='" + nameUA + '\'' +
-                '}';
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     @Override
@@ -55,16 +36,19 @@ public class UserRole {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserRole userRole = (UserRole) o;
-        return id == userRole.id && Objects.equals(name, userRole.name) && Objects.equals(nameUA, userRole.nameUA);
+        return Objects.equals(user, userRole.user) && Objects.equals(role, userRole.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, nameUA);
+        return Objects.hash(user, role);
     }
 
-    public void print(){
-        System.out.println(toString());
+    @Override
+    public String toString() {
+        return "UserRole{" +
+                "user=" + user +
+                ", role=" + role +
+                '}';
     }
-
 }

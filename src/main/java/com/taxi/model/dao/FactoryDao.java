@@ -6,16 +6,18 @@ import java.sql.SQLException;
 
 public class FactoryDao extends DaoFactoryAbst {
 
-    private DataSource dataSource = ConnectionPoolHolder.getDataSource();
+    private  DataSource dataSource = ConnectionPoolHolder.getDataSource();
 
 
-    private Connection getConnection(){
+    private  Connection getConnection(){
         try {
             return dataSource.getConnection();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
+
+
 
     @Override
     public UserDao createUserDao() {
@@ -28,10 +30,13 @@ public class FactoryDao extends DaoFactoryAbst {
     }
 
     @Override
-    public UserRoleDao createUserRoleDao() {return new UserRoleDaoImp(getConnection());  }
+    public RoleDao createRoleDao() {return new RoleDaoImp(getConnection());  }
 
     @Override
     public CarCategoryDao createCarCategoryDao() {return new CarCategoryDaoImp(getConnection());}
 
+
+    @Override
+    public UserRoleDao createUserRoleDao() { return new UserRoleDaoImp(getConnection());}
 
 }

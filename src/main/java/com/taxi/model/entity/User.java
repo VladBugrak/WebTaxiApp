@@ -14,7 +14,7 @@ public class User {
     private String firstName;
     private String lastName;
 
-    private List<UserRole> userRoleList = new ArrayList<UserRole>();
+    private List<Role> roleList = new ArrayList<Role>();
 
 
 
@@ -108,12 +108,12 @@ public class User {
                 ;
     }
 
-    public List<UserRole> getRoleList() {
-        return userRoleList;
+    public List<Role> getRoleList() {
+        return roleList;
     }
 
-    public void setRoleList(List<UserRole> userRoleList) {
-        this.userRoleList = userRoleList;
+    public void setRoleList(List<Role> roleList) {
+        this.roleList = roleList;
     }
 
     @Override

@@ -1,8 +1,8 @@
 package com.taxi.model.dao;
 
 import com.taxi.controller.exceptions.ObjectNotFoundException;
-import com.taxi.controller.exceptions.NotUniqUserException;
-import com.taxi.model.entity.UserRole;
+import com.taxi.controller.exceptions.NonUniqueObjectException;
+import com.taxi.model.entity.Role;
 import com.taxi.model.entity.User;
 
 import java.sql.*;
@@ -21,7 +21,7 @@ public class UserDaoImpl implements UserDao {
 
 
     @Override
-    public User create(User user) {
+    public  User create(User user) {
 
         String query = """                    
                             INSERT into users 
@@ -62,7 +62,7 @@ public class UserDaoImpl implements UserDao {
                     .append(user.getLogin())
                     .append("\" already exist");
 
-            throw new NotUniqUserException( stringBuffer.toString());
+            throw new NonUniqueObjectException( stringBuffer.toString());
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
@@ -70,7 +70,7 @@ public class UserDaoImpl implements UserDao {
     }
 
 
-    private User extractUserFromResultSet(ResultSet resultSet) throws SQLException {
+    public static User extractUserFromResultSet(ResultSet resultSet) throws SQLException {
 
         User user = new User();
         user.setId(resultSet.getInt("id"));
@@ -83,6 +83,8 @@ public class UserDaoImpl implements UserDao {
         return user;
 
     }
+
+
 
     public User findById(int id) {
 
@@ -248,11 +250,11 @@ public class UserDaoImpl implements UserDao {
         }
     }
 
-    public List<UserRole> obtainUserRoles(User user){
+    public List<Role> obtainUserRoles(User user){
 
         FactoryDao factoryDao = new FactoryDao();
-        UserRoleDao userRoleDao = factoryDao.createUserRoleDao();
-        return userRoleDao.findAll();
+        RoleDao roleDao = factoryDao.createRoleDao();
+        return roleDao.findAll();
 
     }
 

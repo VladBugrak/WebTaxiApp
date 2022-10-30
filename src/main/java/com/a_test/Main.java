@@ -1,10 +1,7 @@
 package com.a_test;
 
 import com.taxi.model.dao.*;
-import com.taxi.model.entity.CarCategory;
-import com.taxi.model.entity.GeoPoint;
-import com.taxi.model.entity.User;
-import com.taxi.model.entity.UserRole;
+import com.taxi.model.entity.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,17 +12,91 @@ public class Main {
 
 
 
+    }
+
+    public void test_UserRoleDaoImp(){
+        FactoryDao factoryDao = new FactoryDao();
+        RoleDao roleDao = factoryDao.createRoleDao();
+        UserDao userDaoImp = factoryDao.createUserDao();
+        UserRoleDao userRoleDao = factoryDao.createUserRoleDao();
+
+//        for (int i = 0; i < 40 ; i++) {
+//            if(userRoleDao.userExists(i)){
+//                System.out.println(i);
+//            }
+//        }
+
+//        for (int i = 0; i < 40; i++) {
+//            if (userRoleDao.roleExists(i)) {
+//                System.out.println(i);
+//            }
+//        }
+
+//        List<UserRole> userRoleList = userRoleDao.getAll();
+//        for(UserRole userRole: userRoleList){
+//            System.out.println(userRole.toString());
+//        }
+
+//        Role role = roleDao.findById(3);
+//        System.out.println(role.toString());
+//        List<User> userList = userRoleDao.getAllUsersWithRole(role);
+//        for(User user:userList){
+//            System.out.println(user.toString());
+//        }
+
+//        User user = userDaoImp.findById(23);
+//        System.out.println(user.toString());
+//        List<Role> roleList = new ArrayList<>();
+//        roleList = userRoleDao.getAllUserRoles(user);
+//        for(Role role:roleList){
+//            System.out.println(role.toString());
+//        }
+
+
+//        //assignRole
+//        User user = userDaoImp.findById(15);
+//        System.out.println(user.toString());
+//        Role role = roleDao.findById(6);
+//        System.out.println(role.toString());
+//        userRoleDao.assignRole(user,role);
+//        List<UserRole> userRoleList = userRoleDao.getAll();
+//        for(UserRole userRole: userRoleList){
+//            System.out.println(userRole.toString());
+//        }
+
+
+//        //removeRole
+//        User user = userDaoImp.findById(10);
+//        System.out.println(user.toString());
+//        Role role = roleDao.findById(6);
+//        System.out.println(role.toString());
+//        boolean isRemoved = userRoleDao.removeRole(user,role);
+//        System.out.println(isRemoved);
+//
+//        List<UserRole> userRoleList = userRoleDao.getAll();
+//        for(UserRole userRole: userRoleList){
+//            System.out.println(userRole.toString());
+//        }
+
+
+
+
+
+
+
+
+
 
 
 
 
     }
 
-    public void test_UserRoleDaoImp(){
+    public void test_RoleDaoImp(){
         FactoryDao factoryDao = new FactoryDao();
-        UserRoleDao userRoleDao = factoryDao.createUserRoleDao();
+        RoleDao roleDao = factoryDao.createRoleDao();
 
-        UserRole userRole;
+        Role role;
 
 //        //create
 //        userRole = new UserRole();
@@ -69,7 +140,7 @@ public class Main {
 
 
         //delete
-        userRoleDao.delete(5);
+        roleDao.delete(5);
     }
 
     public void test_CarCategoryImp(){

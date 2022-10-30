@@ -2,24 +2,25 @@ package com.taxi.model.dao;
 
 import com.taxi.controller.exceptions.NonUniqueObjectException;
 import com.taxi.controller.exceptions.ObjectNotFoundException;
-import com.taxi.model.entity.CarCategory;
+import com.taxi.model.entity.Role;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarCategoryDaoImp implements CarCategoryDao{
+public class RoleDaoImp implements RoleDao {
 
     private Connection connection;
 
-    CarCategoryDaoImp(Connection connection) {
+    RoleDaoImp(Connection connection) {
+
         this.connection = connection;
     }
 
     @Override
-    public CarCategory create(CarCategory carCategory) {
+    public Role create(Role role) {
         String query = """                    
-                            INSERT into car_category 
+                            INSERT into roles 
                             ( 
                             name,
                             name_ua                    
@@ -28,16 +29,16 @@ public class CarCategoryDaoImp implements CarCategoryDao{
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
 
-            preparedStatement.setString(1, carCategory.getName());
-            preparedStatement.setString(2, carCategory.getNameUA());
+            preparedStatement.setString(1, role.getName());
+            preparedStatement.setString(2, role.getNameUA());
             preparedStatement.execute();
 
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
 
             if (resultSet.next()) {
-                carCategory.setId(resultSet.getInt(1));
+                role.setId(resultSet.getInt(1));
 
-                return carCategory;
+                return role;
             } else {
                 return null;
             }
@@ -45,13 +46,13 @@ public class CarCategoryDaoImp implements CarCategoryDao{
         } catch (SQLIntegrityConstraintViolationException e) {
             StringBuffer stringBuffer = new StringBuffer();
             stringBuffer
-                    .append("Either car category  with name = \"")
-                    .append(carCategory.getName())
+                    .append("Either user role category  with name = \"")
+                    .append(role.getName())
                     .append("\" already exist")
-                    .append(" or car category  with nameUA = \"")
-                    .append(carCategory.getNameUA())
+                    .append(" or user role  with nameUA = \"")
+                    .append(role.getNameUA())
                     .append("\" already exist")
-                    ;
+            ;
 
 
             throw new NonUniqueObjectException( stringBuffer.toString());
@@ -61,21 +62,25 @@ public class CarCategoryDaoImp implements CarCategoryDao{
         }
     }
 
-    private CarCategory extractCarCategoryFromResultSet(ResultSet resultSet) throws SQLException {
+    public static Role extractUserRoleFromResultSet(ResultSet resultSet) throws SQLException {
 
-        CarCategory carCategory = new CarCategory();
-        carCategory.setId(resultSet.getInt("id"));
-        carCategory.setName(resultSet.getString("name"));
-        carCategory.setNameUA(resultSet.getString("name_ua"));
+        Role role = new Role();
+        role.setId(resultSet.getInt("id"));
+        role.setName(resultSet.getString("name"));
+        role.setNameUA(resultSet.getString("name_ua"));
 
 
-        return carCategory;
+        return role;
+    }
+    @Override
+    public Role findById(int id) {
+        return findById(id,true);
     }
 
-    @Override
-    public CarCategory findById(int id) {
+
+    public Role findById(int id, boolean throwException) {
         String query = """
-                SELECT * from car_category where id=?;
+                SELECT * from roles where id=?;
                 """;
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -85,15 +90,19 @@ public class CarCategoryDaoImp implements CarCategoryDao{
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
-                CarCategory carCategory = extractCarCategoryFromResultSet(resultSet);
-                return carCategory;
+                Role role = extractUserRoleFromResultSet(resultSet);
+                return role;
             } else {
-                StringBuffer stringBuffer = new StringBuffer();
-                stringBuffer
-                        .append("The CarCategory object with id =")
-                        .append(id)
-                        .append(" does not exist in the data base.");
-                throw  new ObjectNotFoundException(stringBuffer.toString());
+                if(throwException) {
+                    StringBuffer stringBuffer = new StringBuffer();
+                    stringBuffer
+                            .append("The UserRole object with id =")
+                            .append(id)
+                            .append(" does not exist in the database.");
+                    throw new ObjectNotFoundException(stringBuffer.toString());
+                } else {
+                    return null;
+                }
             }
 
         } catch (SQLException e) {
@@ -103,22 +112,22 @@ public class CarCategoryDaoImp implements CarCategoryDao{
     }
 
     @Override
-    public List<CarCategory> findAll() {
+    public List<Role> findAll() {
         String query = """
-                SELECT * from car_category;
+                SELECT * from roles;
                 """;
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            List<CarCategory> carCategoryList = new ArrayList<>();
-            CarCategory carCategory;
+            List<Role> roleList = new ArrayList<>();
+            Role role;
             while (resultSet.next()){
-                carCategory = extractCarCategoryFromResultSet(resultSet);
-                carCategoryList.add(carCategory);
+                role = extractUserRoleFromResultSet(resultSet);
+                roleList.add(role);
             }
-            return carCategoryList;
+            return roleList;
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -127,20 +136,19 @@ public class CarCategoryDaoImp implements CarCategoryDao{
     }
 
     @Override
-    public boolean update(CarCategory carCategory) {
-
-        if(findById(carCategory.getId()) == null){
+    public boolean update(Role role) {
+        if(findById(role.getId(),false) == null){
 
             StringBuffer stringBuffer = new StringBuffer();
             stringBuffer
-                    .append("The CarCategory object with id =")
-                    .append(carCategory.getId())
-                    .append(" does not exist in the data base. So you can't update it");
+                    .append("The UserRole object with id =")
+                    .append(role.getId())
+                    .append(" does not exist in the database. So you can't update it");
             throw  new ObjectNotFoundException(stringBuffer.toString());
         }
 
         String query = """
-                UPDATE car_category 
+                UPDATE roles 
                 SET 
                 name=?,
                 name_ua=?                   
@@ -152,9 +160,9 @@ public class CarCategoryDaoImp implements CarCategoryDao{
 
 
 
-            preparedStatement.setString(1,carCategory.getName());
-            preparedStatement.setString(2,carCategory.getNameUA());
-            preparedStatement.setInt(3,carCategory.getId());
+            preparedStatement.setString(1, role.getName());
+            preparedStatement.setString(2, role.getNameUA());
+            preparedStatement.setInt(3, role.getId());
 
 
             return preparedStatement.executeUpdate()>0;
@@ -167,19 +175,18 @@ public class CarCategoryDaoImp implements CarCategoryDao{
 
     @Override
     public boolean delete(int id) {
-
-        if(findById(id) == null){
+        if(findById(id,false) == null){
 
             StringBuffer stringBuffer = new StringBuffer();
             stringBuffer
-                    .append("The CarCategory object with id =")
+                    .append("The UserRole object with id =")
                     .append(id)
-                    .append(" does not exist in the data base. So you can't delete it");
+                    .append(" does not exist in the database. So you can't delete it");
             throw  new ObjectNotFoundException(stringBuffer.toString());
         }
 
         String query = """           
-               DELETE from car_category 
+               DELETE from roles 
                where id=?;
                 """;
 
@@ -203,5 +210,6 @@ public class CarCategoryDaoImp implements CarCategoryDao{
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
     }
 }

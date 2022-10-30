@@ -1,7 +1,7 @@
 package com.taxi.model.dao;
 
+import com.taxi.controller.exceptions.NonUniqueObjectException;
 import com.taxi.controller.exceptions.ObjectNotFoundException;
-import com.taxi.controller.exceptions.NonUniqGeoPointException;
 import com.taxi.model.entity.GeoPoint;
 
 import java.sql.*;
@@ -54,7 +54,7 @@ public class GeoPointDaoImp implements GeoPointDao {
                     .append(geoPoint.getLongitude())
                     .append(" already exist");
 
-            throw new NonUniqGeoPointException( stringBuffer.toString());
+            throw new NonUniqueObjectException( stringBuffer.toString());
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
