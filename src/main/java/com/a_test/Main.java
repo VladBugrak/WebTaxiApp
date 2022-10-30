@@ -10,13 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        FactoryDao factoryDao = new FactoryDao();
-        RoleDao roleDao = factoryDao.createRoleDao();
-        UserDao userDao = factoryDao.createUserDao();
-        UserRoleDao userRoleDao = factoryDao.createUserRoleDao();
-
-        User user = userDao.findById(15);
-        System.out.println(user.toString());
+        System.out.println(Integer.MAX_VALUE);
 
 
 
