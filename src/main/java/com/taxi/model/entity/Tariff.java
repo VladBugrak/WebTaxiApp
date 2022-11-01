@@ -1,11 +1,11 @@
 package com.taxi.model.entity;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Tariff {
 
-    private LocalDate effectiveDate;
     private CarCategory category;
     private int fareForCall;
     private int farePerKm;
@@ -13,32 +13,10 @@ public class Tariff {
     public Tariff() {
     }
 
-    public Tariff(LocalDate effectiveDate, CarCategory category, int callFee, int farePerKm) {
-        this.effectiveDate = effectiveDate;
+    public Tariff(CarCategory category, int fareForCall, int farePerKm) {
         this.category = category;
-        this.fareForCall = callFee;
+        this.fareForCall = fareForCall;
         this.farePerKm = farePerKm;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Tariff tariff = (Tariff) o;
-        return fareForCall == tariff.fareForCall && farePerKm == tariff.farePerKm && Objects.equals(effectiveDate, tariff.effectiveDate) && Objects.equals(category, tariff.category);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(effectiveDate, category, fareForCall, farePerKm);
-    }
-
-    public LocalDate getEffectiveDate() {
-        return effectiveDate;
-    }
-
-    public void setEffectiveDate(LocalDate effectiveDate) {
-        this.effectiveDate = effectiveDate;
     }
 
     public CarCategory getCategory() {
@@ -63,5 +41,27 @@ public class Tariff {
 
     public void setFarePerKm(int farePerKm) {
         this.farePerKm = farePerKm;
+    }
+
+    @Override
+    public String toString() {
+        return "Tariff{" +
+                "category=" + category +
+                ", fareForCall=" + fareForCall +
+                ", farePerKm=" + farePerKm +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Tariff tariff = (Tariff) o;
+        return fareForCall == tariff.fareForCall && farePerKm == tariff.farePerKm && Objects.equals(category, tariff.category);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(category, fareForCall, farePerKm);
     }
 }

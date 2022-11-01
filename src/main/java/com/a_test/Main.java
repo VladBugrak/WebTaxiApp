@@ -3,18 +3,53 @@ package com.a_test;
 import com.taxi.model.dao.*;
 import com.taxi.model.entity.*;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
+//import java.util.Date;
 import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println(Integer.MAX_VALUE);
+        FactoryDao factoryDao = new FactoryDao();
+        RoleDao roleDao = factoryDao.createRoleDao();
+        UserDao userDao = factoryDao.createUserDao();
+        UserRoleDao userRoleDao = factoryDao.createUserRoleDao();
+
+        User user = userDao.findById(1);
+        System.out.println(user.toString());
+
+
+
+
+//        LocalDateTime localDateTime = LocalDateTime.now();
+//        System.out.println(localDateTime);
+////        LocalDate localDate = localDateTime.toLocalDate();
+////        LocalTime localTime = localDateTime.toLocalTime();
+////
+////
+////        java.sql.Date date = java.sql.Date.valueOf(localDate);
+////        java.sql.Time time = java.sql.Time.valueOf(localTime);
+//
+//
+//        Timestamp timestamp = Timestamp.valueOf(localDateTime);
+//        System.out.println(timestamp);
+//
+//        LocalDateTime localDateTime1 = timestamp.toLocalDateTime();
+//
+//        System.out.println(localDateTime1);
+
 
 
 
     }
+
+
 
     public void test_UserRoleDaoImp(){
         FactoryDao factoryDao = new FactoryDao();
