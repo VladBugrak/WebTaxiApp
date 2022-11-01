@@ -93,9 +93,13 @@ creating new connections, and reducing the load on the garbage collector.
             <version>3.0.0</version>
         </dependency>
 
-
-
-
+<!--        com.taxi.util.PasswordEncoder-->
+        <!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.15</version>
+        </dependency>
 
     </dependencies>
 

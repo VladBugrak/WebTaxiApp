@@ -1,5 +1,7 @@
 package com.taxi.model.entity;
 
+import com.taxi.util.PasswordEncoder;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -63,6 +65,7 @@ public class User {
     }
 
     public void setPassword(String password) {
+
         this.password = password;
     }
 

@@ -21,8 +21,17 @@ public class Main {
         UserDao userDao = factoryDao.createUserDao();
         UserRoleDao userRoleDao = factoryDao.createUserRoleDao();
 
-        User user = userDao.findById(1);
-        System.out.println(user.toString());
+       List<User> userList = userDao.findAll();
+
+       for(User user:userList){
+           System.out.println(user.toString());
+       }
+
+//        User user = userDao.findById(15);
+//        System.out.println(user.toString());
+
+
+
 
 
 

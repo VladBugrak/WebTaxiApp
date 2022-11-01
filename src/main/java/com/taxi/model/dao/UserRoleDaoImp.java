@@ -77,7 +77,7 @@ public class UserRoleDaoImp implements UserRoleDao{
     @Override
     public  List<Role> getAllUserRoles(User user) {
 
-        String query = mainQuery + "where user_id=?";
+        String query = mainQuery + "where ur.user_id=?";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 

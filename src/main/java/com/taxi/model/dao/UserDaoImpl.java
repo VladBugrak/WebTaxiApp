@@ -4,6 +4,7 @@ import com.taxi.controller.exceptions.ObjectNotFoundException;
 import com.taxi.controller.exceptions.NonUniqueObjectException;
 import com.taxi.model.entity.Role;
 import com.taxi.model.entity.User;
+import com.taxi.util.PasswordEncoder;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -130,6 +131,7 @@ public class UserDaoImpl implements UserDao {
             User user;
             while (resultSet.next()){
                user = extractUserFromResultSet(resultSet);
+
                user.setRoleList(obtainUserRoles(user));
                userList.add(user);
             }
@@ -231,7 +233,7 @@ public class UserDaoImpl implements UserDao {
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)){
 
             preparedStatement.setString( 1, login);
-            preparedStatement.setString( 2, password);
+            preparedStatement.setString( 2, PasswordEncoder.encode(password));
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -251,10 +253,39 @@ public class UserDaoImpl implements UserDao {
     }
 
     public List<Role> obtainUserRoles(User user) {
-        FactoryDao factoryDao = new FactoryDao();
-        UserRoleDao userRoleDao = factoryDao.createUserRoleDao();
-        List<Role> roleList = userRoleDao.getAllUserRoles(user);
-        return  roleList;
+
+         String query = """
+            SELECT
+             r.id as r_id,
+             r.name as r_name,
+             r.name_ua as r_name_ua
+             --
+             from users_roles as ur       
+             inner join  roles as r
+             on ur.role_id = r.id  
+             where ur.user_id=?
+            """;
+
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setInt(1, user.getId());
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            List<Role> roleList = new ArrayList<>();
+            Role role;
+            while (resultSet.next()){
+                role = new Role();
+                role.setId(resultSet.getInt("r_id"));
+                role.setName(resultSet.getString("r_name"));
+                role.setNameUA(resultSet.getString("r_name_ua"));
+                roleList.add(role);
+            }
+            return roleList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 
 
