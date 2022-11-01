@@ -12,6 +12,8 @@ public abstract class DaoFactoryAbst {
 
     public abstract UserRoleDao createUserRoleDao();
 
+    public abstract CarDao createCarDao();
+
 
 
     public static DaoFactoryAbst getInstance(){

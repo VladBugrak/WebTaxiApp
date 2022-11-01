@@ -37,6 +37,11 @@ public class FactoryDao extends DaoFactoryAbst {
 
 
     @Override
+    public CarDao createCarDao() {
+        return new CarDaoImp(getConnection());
+    }
+
+    @Override
     public UserRoleDao createUserRoleDao() { return new UserRoleDaoImp(getConnection());}
 
 }
