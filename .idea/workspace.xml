@@ -9,13 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ac6ee45-af90-4b8c-90f8-b8922338237b" name="Changes" comment="dao 1.0.4.6 All methods from CarDaoImp was tested">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/TariffDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/TariffDaoImp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/taxi/util/DateConverter.java" afterDir="false" />
+    <list default="true" id="5ac6ee45-af90-4b8c-90f8-b8922338237b" name="Changes" comment="dao 1.0.4.7 Added TariffDao interface and TariffDaoImp imp class">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/taxi/controller/exceptions/PastDateEditingException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/a_test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/a_test/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/entity/Tariff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/entity/Tariff.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +187,7 @@
       <workItem from="1667173759268" duration="233000" />
       <workItem from="1667174097399" duration="6005000" />
       <workItem from="1667248488187" duration="15791000" />
-      <workItem from="1667344187791" duration="13631000" />
+      <workItem from="1667344187791" duration="14325000" />
     </task>
     <task id="LOCAL-00001" summary="dao 1.0.0">
       <created>1666736865878</created>
@@ -347,7 +343,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667355116566</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="dao 1.0.4.7 Added TariffDao interface and TariffDaoImp imp class">
+      <created>1667362808019</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1667362808019</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -387,6 +390,7 @@
     <MESSAGE value="dao 1.0.4.4 added CarDaoImp" />
     <MESSAGE value="dao 1.0.4.5 implemented all methods from CarDao interface in CarDaoImp class." />
     <MESSAGE value="dao 1.0.4.6 All methods from CarDaoImp was tested" />
-    <option name="LAST_COMMIT_MESSAGE" value="dao 1.0.4.6 All methods from CarDaoImp was tested" />
+    <MESSAGE value="dao 1.0.4.7 Added TariffDao interface and TariffDaoImp imp class" />
+    <option name="LAST_COMMIT_MESSAGE" value="dao 1.0.4.7 Added TariffDao interface and TariffDaoImp imp class" />
   </component>
 </project>
