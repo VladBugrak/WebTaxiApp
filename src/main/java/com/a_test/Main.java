@@ -24,6 +24,20 @@ public class Main {
         CarDao carDao = factoryDao.createCarDao();
 
 
+
+
+    }
+
+    public void test_CarDaoImp(){
+
+        FactoryDao factoryDao = new FactoryDao();
+        RoleDao roleDao = factoryDao.createRoleDao();
+        UserDao userDao = factoryDao.createUserDao();
+        UserRoleDao userRoleDao = factoryDao.createUserRoleDao();
+        CarCategoryDao carCategoryDao = factoryDao.createCarCategoryDao();
+        CarDao carDao = factoryDao.createCarDao();
+
+
         CarCategory standard = carCategoryDao.findById(1);
         CarCategory lux = carCategoryDao.findById(2);
         CarCategory miniBus = carCategoryDao.findById(3);

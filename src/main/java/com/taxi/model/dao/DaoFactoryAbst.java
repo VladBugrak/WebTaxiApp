@@ -14,6 +14,8 @@ public abstract class DaoFactoryAbst {
 
     public abstract CarDao createCarDao();
 
+    public abstract TariffDao createTariffDao();
+
 
 
     public static DaoFactoryAbst getInstance(){

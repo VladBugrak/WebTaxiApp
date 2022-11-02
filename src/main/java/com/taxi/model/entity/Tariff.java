@@ -6,6 +6,7 @@ import java.util.Objects;
 
 public class Tariff {
 
+    private LocalDateTime effectiveData;
     private CarCategory category;
     private int fareForCall;
     private int farePerKm;
@@ -13,10 +14,19 @@ public class Tariff {
     public Tariff() {
     }
 
-    public Tariff(CarCategory category, int fareForCall, int farePerKm) {
+    public Tariff(LocalDateTime effectiveData, CarCategory category, int fareForCall, int farePerKm) {
+        this.effectiveData = effectiveData;
         this.category = category;
         this.fareForCall = fareForCall;
         this.farePerKm = farePerKm;
+    }
+
+    public LocalDateTime getEffectiveData() {
+        return effectiveData;
+    }
+
+    public void setEffectiveData(LocalDateTime effectiveData) {
+        this.effectiveData = effectiveData;
     }
 
     public CarCategory getCategory() {
@@ -43,25 +53,28 @@ public class Tariff {
         this.farePerKm = farePerKm;
     }
 
+
     @Override
     public String toString() {
         return "Tariff{" +
-                "category=" + category +
+                "effectiveData=" + effectiveData +
+                ", category=" + category +
                 ", fareForCall=" + fareForCall +
                 ", farePerKm=" + farePerKm +
                 '}';
     }
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Tariff tariff = (Tariff) o;
-        return fareForCall == tariff.fareForCall && farePerKm == tariff.farePerKm && Objects.equals(category, tariff.category);
+        return fareForCall == tariff.fareForCall && farePerKm == tariff.farePerKm && Objects.equals(effectiveData, tariff.effectiveData) && Objects.equals(category, tariff.category);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(category, fareForCall, farePerKm);
+        return Objects.hash(effectiveData, category, fareForCall, farePerKm);
     }
 }
