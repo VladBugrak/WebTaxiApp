@@ -20,15 +20,49 @@ public class Main {
         RoleDao roleDao = factoryDao.createRoleDao();
         UserDao userDao = factoryDao.createUserDao();
         UserRoleDao userRoleDao = factoryDao.createUserRoleDao();
+        CarCategoryDao carCategoryDao = factoryDao.createCarCategoryDao();
+        CarDao carDao = factoryDao.createCarDao();
 
-       List<User> userList = userDao.findAll();
 
-       for(User user:userList){
-           System.out.println(user.toString());
-       }
+        CarCategory standard = carCategoryDao.findById(1);
+        CarCategory lux = carCategoryDao.findById(2);
+        CarCategory miniBus = carCategoryDao.findById(3);
 
-//        User user = userDao.findById(15);
-//        System.out.println(user.toString());
+
+//        //create
+//        Car car = new Car();
+//        car.setPlateNumber("TAXI-0008");
+//        car.setModel("Volkswagen Microbus");
+//        car.setColor("white-green");
+//        car.setColorUA("біло-зелений");
+//        car.setCarCategory(miniBus);
+//        car.setCapacity(10);
+//        car.toString();
+//
+//        carDao.create(car);
+//        car.toString();
+
+//        //findById
+//        Car car = carDao.findById(10);
+//        System.out.println(car.toString());
+
+//        //findALl
+//        List<Car> carList = carDao.findAll();
+//        for(Car car:carList){
+//            System.out.println(car);
+//        }
+
+//        //update
+//        Car car = carDao.findById(7);
+//        System.out.println(car);
+//        car.setCapacity(22);
+//        carDao.update(car);
+//        System.out.println(car);
+
+        //delete
+        carDao.delete(7);
+
+
 
 
 

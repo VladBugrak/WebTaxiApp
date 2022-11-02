@@ -4,7 +4,7 @@ import com.taxi.controller.exceptions.NonUniqueObjectException;
 import com.taxi.controller.exceptions.ObjectNotFoundException;
 import com.taxi.model.entity.Car;
 import com.taxi.model.entity.CarCategory;
-import com.taxi.model.entity.User;
+
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -21,6 +21,7 @@ public class CarDaoImp implements CarDao {
 
     final String SEARCHING_QUERY = """
             Select
+            -- Car fields:
             c.id,
             c.plate_number,
             c.model,
@@ -29,12 +30,12 @@ public class CarDaoImp implements CarDao {
             c.car_category_id,
             c.capacity,
             c.image_link,
-            --
+            -- CarCategory fields
             cc.id as cc_id,
             cc.name as cc_name,
             cc.name_ua as cc_name_ua
             --
-            form cars as c
+            from cars as c
             inner join
             car_category as cc
             on c.car_category_id = cc.id
@@ -44,7 +45,7 @@ public class CarDaoImp implements CarDao {
     @Override
     public Car create(Car car) {
         String query = """                    
-                            INSERT into users 
+                            INSERT into cars 
                             ( 
                             plate_number, 
                             model, 
@@ -190,7 +191,7 @@ public class CarDaoImp implements CarDao {
                 color_ua=?, 
                 car_category_id=?, 
                 capacity =?,
-                image_link=?,         
+                image_link=?         
                 where id=?
                 """;
 
