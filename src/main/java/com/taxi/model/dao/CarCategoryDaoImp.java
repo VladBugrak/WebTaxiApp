@@ -16,6 +16,8 @@ public class CarCategoryDaoImp implements CarCategoryDao{
         this.connection = connection;
     }
 
+
+
     @Override
     public CarCategory create(CarCategory carCategory) {
         String query = """                    
