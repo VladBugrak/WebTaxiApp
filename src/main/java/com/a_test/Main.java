@@ -23,6 +23,28 @@ public class Main {
         CarCategoryDao carCategoryDao = factoryDao.createCarCategoryDao();
         CarDao carDao = factoryDao.createCarDao();
 
+        TariffDao tariffDao = factoryDao.createTariffDao();
+
+
+
+
+//        //Create
+//        Tariff tariff = new Tariff();
+//        CarCategory standardCarCategory = carCategoryDao.findById(1);
+//        CarCategory luxCarCategory = carCategoryDao.findById(2);
+//        CarCategory microBusCarCategory = carCategoryDao.findById(3);
+//        LocalDate localDate = LocalDate.now();
+//
+//        tariff.setEffectiveData(localDate);
+//        tariff.setCarCategory(microBusCarCategory);
+//        tariff.setFareForCall(63);
+//        tariff.setFarePerKm(6);
+//
+//        System.out.println(tariff);
+//        tariff = tariffDao.create(tariff);
+//        System.out.println(tariff);
+
+
 
 
 

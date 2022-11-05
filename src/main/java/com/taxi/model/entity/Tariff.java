@@ -6,50 +6,60 @@ import java.util.Objects;
 
 public class Tariff {
 
-    private LocalDateTime effectiveData;
-    private CarCategory category;
-    private int fareForCall;
-    private int farePerKm;
+    private int id;
+    private LocalDate effectiveData;
+    private CarCategory carCategory;
+    private double fareForCall;
+    private double farePerKm;
 
     public Tariff() {
     }
 
-    public Tariff(LocalDateTime effectiveData, CarCategory category, int fareForCall, int farePerKm) {
+    public Tariff(int id, LocalDate effectiveData, CarCategory carCategory, double fareForCall, double farePerKm) {
+        this.id = id;
         this.effectiveData = effectiveData;
-        this.category = category;
+        this.carCategory = carCategory;
         this.fareForCall = fareForCall;
         this.farePerKm = farePerKm;
     }
 
-    public LocalDateTime getEffectiveData() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public LocalDate getEffectiveData() {
         return effectiveData;
     }
 
-    public void setEffectiveData(LocalDateTime effectiveData) {
+    public void setEffectiveData(LocalDate effectiveData) {
         this.effectiveData = effectiveData;
     }
 
-    public CarCategory getCategory() {
-        return category;
+    public CarCategory getCarCategory() {
+        return carCategory;
     }
 
-    public void setCategory(CarCategory category) {
-        this.category = category;
+    public void setCarCategory(CarCategory carCategory) {
+        this.carCategory = carCategory;
     }
 
-    public int getFareForCall() {
+    public double getFareForCall() {
         return fareForCall;
     }
 
-    public void setFareForCall(int fareForCall) {
+    public void setFareForCall(double fareForCall) {
         this.fareForCall = fareForCall;
     }
 
-    public int getFarePerKm() {
+    public double getFarePerKm() {
         return farePerKm;
     }
 
-    public void setFarePerKm(int farePerKm) {
+    public void setFarePerKm(double farePerKm) {
         this.farePerKm = farePerKm;
     }
 
@@ -57,24 +67,24 @@ public class Tariff {
     @Override
     public String toString() {
         return "Tariff{" +
-                "effectiveData=" + effectiveData +
-                ", category=" + category +
+                "id=" + id +
+                ", effectiveData=" + effectiveData +
+                ", carCategory=" + carCategory +
                 ", fareForCall=" + fareForCall +
                 ", farePerKm=" + farePerKm +
                 '}';
     }
-
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Tariff tariff = (Tariff) o;
-        return fareForCall == tariff.fareForCall && farePerKm == tariff.farePerKm && Objects.equals(effectiveData, tariff.effectiveData) && Objects.equals(category, tariff.category);
+        return id == tariff.id && Double.compare(tariff.fareForCall, fareForCall) == 0 && Double.compare(tariff.farePerKm, farePerKm) == 0 && Objects.equals(effectiveData, tariff.effectiveData) && Objects.equals(carCategory, tariff.carCategory);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(effectiveData, category, fareForCall, farePerKm);
+        return Objects.hash(id, effectiveData, carCategory, fareForCall, farePerKm);
     }
 }

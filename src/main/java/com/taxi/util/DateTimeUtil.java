@@ -1,8 +1,24 @@
 package com.taxi.util;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
-public class DateConverter {
+public class DateTimeUtil {
+
+    public static Timestamp now(){
+        LocalDateTime localDateTime = LocalDateTime.now();
+        return Timestamp.valueOf(localDateTime);
+    }
+
+//    public static Date getStartOfDayDate(Date date) {
+//        Calendar calendar = Calendar.getInstance();
+//        int year = calendar.get(Calendar.YEAR);
+//        int month = calendar.get(Calendar.MONTH);
+//        int day = calendar.get(Calendar.DATE);
+//        calendar.set(year, month, day, 0, 0, 0);
+//        return calendar.getTime();
+//
+//    }
 
 
     LocalDateTime localDateTime = LocalDateTime.now();
