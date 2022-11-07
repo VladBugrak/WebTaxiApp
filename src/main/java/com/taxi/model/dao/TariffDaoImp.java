@@ -3,13 +3,11 @@ package com.taxi.model.dao;
 import com.taxi.controller.exceptions.NonUniqueObjectException;
 import com.taxi.controller.exceptions.ObjectNotFoundException;
 import com.taxi.controller.exceptions.PastDateEditingException;
-import com.taxi.model.entity.Car;
 import com.taxi.model.entity.CarCategory;
 import com.taxi.model.entity.Tariff;
 
 import java.sql.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,7 +77,7 @@ public class TariffDaoImp implements TariffDao{
             throw  new ObjectNotFoundException(stringBuffer.toString());
         }
 
-        final LocalDate EFFECTIVE_DATE = tariff.getEffectiveData();
+        final LocalDate EFFECTIVE_DATE = tariff.getEffectiveDate();
 
         if(EFFECTIVE_DATE.isBefore(LocalDate.now())){
             StringBuffer stringBuffer = new StringBuffer();
@@ -127,7 +125,7 @@ public class TariffDaoImp implements TariffDao{
                     .append("Tariff with car category  \"")
                     .append(tariff.getCarCategory())
                     .append("\" and effective time \"")
-                    .append(tariff.getEffectiveData())
+                    .append(tariff.getEffectiveDate())
                     .append("\" already exist")
             ;
 
@@ -151,7 +149,7 @@ public class TariffDaoImp implements TariffDao{
     private Tariff extractTariffFromResultSet(ResultSet resultSet) throws SQLException{
         Tariff tariff = new Tariff();
         tariff.setId(resultSet.getInt("id"));
-        tariff.setEffectiveData(resultSet.getTimestamp("effective_date").toLocalDateTime().toLocalDate());
+        tariff.setEffectiveDate(resultSet.getTimestamp("effective_date").toLocalDateTime().toLocalDate());
         tariff.setCarCategory(extractCarCategoryFromResultSet(resultSet));
         tariff.setFareForCall(resultSet.getDouble("fare_for_call"));
         tariff.setFarePerKm(resultSet.getDouble("fare_per_km"));
@@ -203,7 +201,7 @@ public class TariffDaoImp implements TariffDao{
     @Override
     public boolean update(Tariff tariff) {
 
-        final LocalDate EFFECTIVE_DATE = tariff.getEffectiveData();
+        final LocalDate EFFECTIVE_DATE = tariff.getEffectiveDate();
 
         if(findById(tariff.getId()) == null){
 
@@ -241,7 +239,7 @@ public class TariffDaoImp implements TariffDao{
 
             System.out.println(connection);
 
-            preparedStatement.setTimestamp(1, Timestamp.valueOf(tariff.getEffectiveData().atStartOfDay()));
+            preparedStatement.setTimestamp(1, Timestamp.valueOf(tariff.getEffectiveDate().atStartOfDay()));
             preparedStatement.setInt( 2, tariff.getCarCategory().getId());
             preparedStatement.setDouble( 3, tariff.getFareForCall());
             preparedStatement.setDouble( 4, tariff.getFarePerKm());
@@ -254,7 +252,7 @@ public class TariffDaoImp implements TariffDao{
                     .append("Tariff with car category  \"")
                     .append(tariff.getCarCategory())
                     .append("\" and effective time \"")
-                    .append(tariff.getEffectiveData())
+                    .append(tariff.getEffectiveDate())
                     .append("\" already exist")
             ;
             throw new NonUniqueObjectException(stringBuffer.toString());

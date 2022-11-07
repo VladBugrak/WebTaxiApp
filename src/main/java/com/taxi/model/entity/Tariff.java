@@ -3,13 +3,12 @@ package com.taxi.model.entity;
 import com.taxi.util.MyMath;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Tariff {
 
     private int id;
-    private LocalDate effectiveData;
+    private LocalDate effectiveDate;
     private CarCategory carCategory;
     private double fareForCall;
     private double farePerKm;
@@ -17,9 +16,9 @@ public class Tariff {
     public Tariff() {
     }
 
-    public Tariff(int id, LocalDate effectiveData, CarCategory carCategory, double fareForCall, double farePerKm) {
+    public Tariff(int id, LocalDate effectiveDate, CarCategory carCategory, double fareForCall, double farePerKm) {
         this.id = id;
-        this.effectiveData = effectiveData;
+        this.effectiveDate = effectiveDate;
         this.carCategory = carCategory;
         this.fareForCall = fareForCall;
         this.farePerKm = farePerKm;
@@ -33,12 +32,12 @@ public class Tariff {
         this.id = id;
     }
 
-    public LocalDate getEffectiveData() {
-        return effectiveData;
+    public LocalDate getEffectiveDate() {
+        return effectiveDate;
     }
 
-    public void setEffectiveData(LocalDate effectiveData) {
-        this.effectiveData = effectiveData;
+    public void setEffectiveDate(LocalDate effectiveDate) {
+        this.effectiveDate = effectiveDate;
     }
 
     public CarCategory getCarCategory() {
@@ -70,7 +69,7 @@ public class Tariff {
     public String toString() {
         return "Tariff{" +
                 "id=" + id +
-                ", effectiveData=" + effectiveData +
+                ", effectiveData=" + effectiveDate +
                 ", carCategory=" + carCategory +
                 ", fareForCall=" + fareForCall +
                 ", farePerKm=" + farePerKm +
@@ -82,11 +81,11 @@ public class Tariff {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Tariff tariff = (Tariff) o;
-        return id == tariff.id && Double.compare(tariff.fareForCall, fareForCall) == 0 && Double.compare(tariff.farePerKm, farePerKm) == 0 && Objects.equals(effectiveData, tariff.effectiveData) && Objects.equals(carCategory, tariff.carCategory);
+        return id == tariff.id && Double.compare(tariff.fareForCall, fareForCall) == 0 && Double.compare(tariff.farePerKm, farePerKm) == 0 && Objects.equals(effectiveDate, tariff.effectiveDate) && Objects.equals(carCategory, tariff.carCategory);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, effectiveData, carCategory, fareForCall, farePerKm);
+        return Objects.hash(id, effectiveDate, carCategory, fareForCall, farePerKm);
     }
 }

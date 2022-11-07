@@ -16,6 +16,8 @@ public abstract class DaoFactoryAbst {
 
     public abstract TariffDao createTariffDao();
 
+    public abstract DiscountDao createDiscountDao();
+
 
 
     public static DaoFactoryAbst getInstance(){

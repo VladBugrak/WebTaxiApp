@@ -7,11 +7,14 @@ import java.util.Objects;
 
 public class Discount {
 
+
     private int id;
     private LocalDate effectiveDate;
     private int discountLevel;
     private double totalSumCondition;
     private double discountPercentage;
+
+    final int MAX_DISCOUNT_LEVEL = 10;
 
     public Discount() {
     }
@@ -44,6 +47,20 @@ public class Discount {
     }
 
     public void setDiscountLevel(int discountLevel) {
+        if(discountLevel < 1 || discountLevel > MAX_DISCOUNT_LEVEL){
+            StringBuffer stringBuffer = new StringBuffer();
+            stringBuffer
+                    .append("You've tried to set ")
+                    .append(discountLevel)
+                    .append(" as the discount level. ")
+                    .append("The discount level must be in the range of integer values from 1 to ")
+                    .append(MAX_DISCOUNT_LEVEL)
+                    .append(" inclusive.")
+            ;
+            throw new IllegalArgumentException(stringBuffer.toString());
+        }
+
+
         this.discountLevel = discountLevel;
     }
 

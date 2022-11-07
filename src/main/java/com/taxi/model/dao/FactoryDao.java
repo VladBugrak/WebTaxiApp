@@ -45,6 +45,11 @@ public class FactoryDao extends DaoFactoryAbst {
     public UserRoleDao createUserRoleDao() { return new UserRoleDaoImp(getConnection());}
 
     @Override
+    public DiscountDao createDiscountDao() {
+        return new DiscountDaoImp(getConnection());
+    }
+
+    @Override
     public TariffDao createTariffDao() {
         return new TariffDaoImp(getConnection());
     }
