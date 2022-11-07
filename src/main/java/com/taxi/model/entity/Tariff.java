@@ -1,5 +1,7 @@
 package com.taxi.model.entity;
 
+import com.taxi.util.MyMath;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -52,7 +54,7 @@ public class Tariff {
     }
 
     public void setFareForCall(double fareForCall) {
-        this.fareForCall = fareForCall;
+        this.fareForCall = MyMath.roundToTwoDecimalPlaces(fareForCall);
     }
 
     public double getFarePerKm() {
@@ -60,7 +62,7 @@ public class Tariff {
     }
 
     public void setFarePerKm(double farePerKm) {
-        this.farePerKm = farePerKm;
+        this.farePerKm = MyMath.roundToTwoDecimalPlaces(farePerKm);
     }
 
 

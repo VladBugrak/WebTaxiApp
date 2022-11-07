@@ -92,9 +92,6 @@ public class TariffDaoImp implements TariffDao{
             throw new PastDateEditingException(stringBuffer.toString());
         }
 
-
-
-
         final String QUERY = """
                 INSERT into tariffs
                 (
@@ -104,7 +101,6 @@ public class TariffDaoImp implements TariffDao{
                 fare_per_km
                 ) VALUES (?,?,?,?) 
                 """;
-
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(QUERY, Statement.RETURN_GENERATED_KEYS)) {
 
@@ -232,16 +228,18 @@ public class TariffDaoImp implements TariffDao{
 
 
         final String UPDATE_QUERY = """
-                UPDATE cars 
+                UPDATE tariffs 
                 SET 
                 effective_date=?,
                 car_category_id=?, 
                 fare_for_call=?, 
-                fare_per_km=?,          
+                fare_per_km=?          
                 where id=?
                 """;
 
         try(PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_QUERY)){
+
+            System.out.println(connection);
 
             preparedStatement.setTimestamp(1, Timestamp.valueOf(tariff.getEffectiveData().atStartOfDay()));
             preparedStatement.setInt( 2, tariff.getCarCategory().getId());
@@ -250,7 +248,16 @@ public class TariffDaoImp implements TariffDao{
             preparedStatement.setInt(5,tariff.getId());
 
             return preparedStatement.executeUpdate()>0;
-
+        } catch (SQLIntegrityConstraintViolationException e) {
+            StringBuffer stringBuffer = new StringBuffer();
+            stringBuffer
+                    .append("Tariff with car category  \"")
+                    .append(tariff.getCarCategory())
+                    .append("\" and effective time \"")
+                    .append(tariff.getEffectiveData())
+                    .append("\" already exist")
+            ;
+            throw new NonUniqueObjectException(stringBuffer.toString());
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
@@ -289,6 +296,49 @@ public class TariffDaoImp implements TariffDao{
 
 
     @Override
+    public Tariff getTariffOnDate(LocalDate localDate, CarCategory carCategory) {
+        final String SELECTION_CONDITION_QUERY = """
+                
+                -- selection condition
+                inner join
+                   (select
+                   car_category_id,
+                   max(effective_date) as effective_date
+                   from tariffs
+                   where
+                   effective_date <= ?
+                   and car_category_id = ?
+                   group by car_category_id) selection_condition
+                   on
+                   t.effective_date = selection_condition.effective_date
+                   and
+                   t.car_category_id = selection_condition.car_category_id
+                """;
+        final String QUERY = SEARCHING_QUERY + SELECTION_CONDITION_QUERY;
+//        System.out.println(QUERY);
+
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(QUERY)) {
+
+            preparedStatement.setTimestamp(1, Timestamp.valueOf(localDate.atStartOfDay()));
+            preparedStatement.setInt(2,carCategory.getId());
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                Tariff tariff = extractTariffFromResultSet(resultSet);
+                return tariff;
+            } else {
+                return null;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    @Override
     public void close() {
         try {
             connection.close();
@@ -297,7 +347,4 @@ public class TariffDaoImp implements TariffDao{
         }
 
     }
-
-
-
 }
