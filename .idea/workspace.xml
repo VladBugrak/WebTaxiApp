@@ -9,13 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ac6ee45-af90-4b8c-90f8-b8922338237b" name="Changes" comment="dao 1.0.4.9 TariffDaoImp is completed. Only create method was tested.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/taxi/util/MyMath.java" afterDir="false" />
+    <list default="true" id="5ac6ee45-af90-4b8c-90f8-b8922338237b" name="Changes" comment="dao 1.0.5.0 All methods in TariffDaoImp were checked">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/a_test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/a_test/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/TariffDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/TariffDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/TariffDaoImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/TariffDaoImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/entity/Tariff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/entity/Tariff.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/entity/Discount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/entity/Discount.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +191,7 @@
       <workItem from="1667602789765" duration="14946000" />
       <workItem from="1667688040868" duration="4998000" />
       <workItem from="1667776406952" duration="1948000" />
-      <workItem from="1667778672031" duration="5098000" />
+      <workItem from="1667778672031" duration="6546000" />
     </task>
     <task id="LOCAL-00001" summary="dao 1.0.0">
       <created>1666736865878</created>
@@ -372,7 +368,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667689446105</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="dao 1.0.5.0 All methods in TariffDaoImp were checked">
+      <created>1667784455464</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1667784455464</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -390,7 +393,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="dao 1.0.0" />
     <MESSAGE value="dao 1.0.1" />
     <MESSAGE value="dao 1.0.2 Checked all UserDaoImpl methods" />
     <MESSAGE value="dao 1.0.3 all methods in UserDaoImpl was tasted manually" />
@@ -415,7 +417,8 @@
     <MESSAGE value="dao 1.0.4.7 Added TariffDao interface and TariffDaoImp imp class" />
     <MESSAGE value="dao 1.0.4.8 added PastDateEditingException" />
     <MESSAGE value="dao 1.0.4.9 TariffDaoImp is completed. Only create method was tested." />
-    <option name="LAST_COMMIT_MESSAGE" value="dao 1.0.4.9 TariffDaoImp is completed. Only create method was tested." />
+    <MESSAGE value="dao 1.0.5.0 All methods in TariffDaoImp were checked" />
+    <option name="LAST_COMMIT_MESSAGE" value="dao 1.0.5.0 All methods in TariffDaoImp were checked" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
