@@ -1,7 +1,7 @@
 package com.taxi.model.dao;
 
-public abstract class DaoFactoryAbst {
-    private static DaoFactoryAbst daoFactoryAbst;
+public abstract class DaoFactoryAbstract {
+    private static DaoFactoryAbstract daoFactoryAbstract;
 
     public abstract UserDao createUserDao();
     public abstract GeoPointDao createGeoPointDao();
@@ -18,16 +18,18 @@ public abstract class DaoFactoryAbst {
 
     public abstract DiscountDao createDiscountDao();
 
+    public abstract CarStatusDoa createCarStatusDao();
 
 
-    public static DaoFactoryAbst getInstance(){
-        if( daoFactoryAbst == null ){
-            synchronized (DaoFactoryAbst.class){
-                if(daoFactoryAbst ==null){
-                    daoFactoryAbst = new FactoryDao();
+
+    public static DaoFactoryAbstract getInstance(){
+        if( daoFactoryAbstract == null ){
+            synchronized (DaoFactoryAbstract.class){
+                if(daoFactoryAbstract ==null){
+                    daoFactoryAbstract = new DaoFactory();
                 }
             }
         }
-        return daoFactoryAbst;
+        return daoFactoryAbstract;
     }
 }

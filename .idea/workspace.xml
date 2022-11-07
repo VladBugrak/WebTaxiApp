@@ -9,9 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ac6ee45-af90-4b8c-90f8-b8922338237b" name="Changes" comment="dao 1.0.5.3 have checked all methods from DiscountDaoImp class. All methods work correct.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/entity/CarStatus.java" afterDir="false" />
+    <list default="true" id="5ac6ee45-af90-4b8c-90f8-b8922338237b" name="Changes" comment="dao 1.0.5.4 CarStatus class was added.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/CarStatusDoa.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/CarStatusDoaImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/a_test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/a_test/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/CarCategoryDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/CarCategoryDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/DaoFactoryAbst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/DaoFactoryAbstract.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/FactoryDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/DaoFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,7 +197,7 @@
       <workItem from="1667688040868" duration="4998000" />
       <workItem from="1667776406952" duration="1948000" />
       <workItem from="1667778672031" duration="21386000" />
-      <workItem from="1667862268918" duration="576000" />
+      <workItem from="1667862268918" duration="2746000" />
     </task>
     <task id="LOCAL-00001" summary="dao 1.0.0">
       <created>1666736865878</created>
@@ -397,7 +402,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667802900177</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="dao 1.0.5.4 CarStatus class was added.">
+      <created>1667862878153</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1667862878153</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -415,7 +427,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="dao 1.0.3.1" />
     <MESSAGE value="dao 1.0.3.2 Added GeolocationPoint class" />
     <MESSAGE value="dao 1.0.3.3 finished GeoPointDaoImp methods. Haven't test them  yet." />
     <MESSAGE value="dao 1.0.3.4 I have tested all GeoPointDaoImp methods." />
@@ -440,7 +451,8 @@
     <MESSAGE value="dao 1.0.5.1 finished the Discount class." />
     <MESSAGE value="dao 1.0.5.2 finished DiscountDaoImp class." />
     <MESSAGE value="dao 1.0.5.3 have checked all methods from DiscountDaoImp class. All methods work correct." />
-    <option name="LAST_COMMIT_MESSAGE" value="dao 1.0.5.3 have checked all methods from DiscountDaoImp class. All methods work correct." />
+    <MESSAGE value="dao 1.0.5.4 CarStatus class was added." />
+    <option name="LAST_COMMIT_MESSAGE" value="dao 1.0.5.4 CarStatus class was added." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

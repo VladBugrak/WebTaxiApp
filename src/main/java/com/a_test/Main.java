@@ -3,12 +3,7 @@ package com.a_test;
 import com.taxi.model.dao.*;
 import com.taxi.model.entity.*;
 
-import java.sql.Date;
-import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.ArrayList;
 //import java.util.Date;
 import java.util.List;
 
@@ -16,14 +11,14 @@ public class Main {
 
     public static void main(String[] args) {
 
-        FactoryDao factoryDao = new FactoryDao();
-        RoleDao roleDao = factoryDao.createRoleDao();
-        UserDao userDao = factoryDao.createUserDao();
-        UserRoleDao userRoleDao = factoryDao.createUserRoleDao();
-        CarCategoryDao carCategoryDao = factoryDao.createCarCategoryDao();
-        CarDao carDao = factoryDao.createCarDao();
-        TariffDao tariffDao = factoryDao.createTariffDao();
-        DiscountDao discountDao = factoryDao.createDiscountDao();
+        DaoFactory daoFactory = new DaoFactory();
+        RoleDao roleDao = daoFactory.createRoleDao();
+        UserDao userDao = daoFactory.createUserDao();
+        UserRoleDao userRoleDao = daoFactory.createUserRoleDao();
+        CarCategoryDao carCategoryDao = daoFactory.createCarCategoryDao();
+        CarDao carDao = daoFactory.createCarDao();
+        TariffDao tariffDao = daoFactory.createTariffDao();
+        DiscountDao discountDao = daoFactory.createDiscountDao();
 
         // getValidDiscountsOnDate(LocalDate localDate)
         LocalDate localDate = LocalDate.of(2022, 11, 8);
@@ -90,14 +85,14 @@ public class Main {
 
     public void test_Tariff(){
 
-        FactoryDao factoryDao = new FactoryDao();
-        RoleDao roleDao = factoryDao.createRoleDao();
-        UserDao userDao = factoryDao.createUserDao();
-        UserRoleDao userRoleDao = factoryDao.createUserRoleDao();
-        CarCategoryDao carCategoryDao = factoryDao.createCarCategoryDao();
-        CarDao carDao = factoryDao.createCarDao();
+        DaoFactory daoFactory = new DaoFactory();
+        RoleDao roleDao = daoFactory.createRoleDao();
+        UserDao userDao = daoFactory.createUserDao();
+        UserRoleDao userRoleDao = daoFactory.createUserRoleDao();
+        CarCategoryDao carCategoryDao = daoFactory.createCarCategoryDao();
+        CarDao carDao = daoFactory.createCarDao();
 
-        TariffDao tariffDao = factoryDao.createTariffDao();
+        TariffDao tariffDao = daoFactory.createTariffDao();
 
 
 
@@ -160,12 +155,12 @@ public class Main {
 
     public void test_CarDaoImp(){
 
-        FactoryDao factoryDao = new FactoryDao();
-        RoleDao roleDao = factoryDao.createRoleDao();
-        UserDao userDao = factoryDao.createUserDao();
-        UserRoleDao userRoleDao = factoryDao.createUserRoleDao();
-        CarCategoryDao carCategoryDao = factoryDao.createCarCategoryDao();
-        CarDao carDao = factoryDao.createCarDao();
+        DaoFactory daoFactory = new DaoFactory();
+        RoleDao roleDao = daoFactory.createRoleDao();
+        UserDao userDao = daoFactory.createUserDao();
+        UserRoleDao userRoleDao = daoFactory.createUserRoleDao();
+        CarCategoryDao carCategoryDao = daoFactory.createCarCategoryDao();
+        CarDao carDao = daoFactory.createCarDao();
 
 
         CarCategory standard = carCategoryDao.findById(1);
@@ -239,10 +234,10 @@ public class Main {
 
 
     public void test_UserRoleDaoImp(){
-        FactoryDao factoryDao = new FactoryDao();
-        RoleDao roleDao = factoryDao.createRoleDao();
-        UserDao userDaoImp = factoryDao.createUserDao();
-        UserRoleDao userRoleDao = factoryDao.createUserRoleDao();
+        DaoFactory daoFactory = new DaoFactory();
+        RoleDao roleDao = daoFactory.createRoleDao();
+        UserDao userDaoImp = daoFactory.createUserDao();
+        UserRoleDao userRoleDao = daoFactory.createUserRoleDao();
 
 //        for (int i = 0; i < 40 ; i++) {
 //            if(userRoleDao.userExists(i)){
@@ -317,8 +312,8 @@ public class Main {
     }
 
     public void test_RoleDaoImp(){
-        FactoryDao factoryDao = new FactoryDao();
-        RoleDao roleDao = factoryDao.createRoleDao();
+        DaoFactory daoFactory = new DaoFactory();
+        RoleDao roleDao = daoFactory.createRoleDao();
 
         Role role;
 
@@ -368,8 +363,8 @@ public class Main {
     }
 
     public void test_CarCategoryImp(){
-        FactoryDao factoryDao = new FactoryDao();
-        CarCategoryDao carCategoryDaoImp = factoryDao.createCarCategoryDao();
+        DaoFactory daoFactory = new DaoFactory();
+        CarCategoryDao carCategoryDaoImp = daoFactory.createCarCategoryDao();
 
         CarCategory carCategory = new CarCategory();
 
@@ -412,8 +407,8 @@ public class Main {
     }
 
     public void test_GeoPointDaoImp(){
-        FactoryDao factoryDao = new FactoryDao();
-        GeoPointDao geoPointDaoImp = factoryDao.createGeoPointDao();
+        DaoFactory daoFactory = new DaoFactory();
+        GeoPointDao geoPointDaoImp = daoFactory.createGeoPointDao();
 
         GeoPoint geoPoint = new GeoPoint();
 
@@ -450,8 +445,8 @@ public class Main {
     }
 
     public void test_UserDaoImpl(){
-        FactoryDao factoryDao = new FactoryDao();
-        UserDao userDaoImp = factoryDao.createUserDao();
+        DaoFactory daoFactory = new DaoFactory();
+        UserDao userDaoImp = daoFactory.createUserDao();
 
         User user;
 
