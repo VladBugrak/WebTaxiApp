@@ -9,15 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ac6ee45-af90-4b8c-90f8-b8922338237b" name="Changes" comment="dao 1.0.5.1 finished the Discount class.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/DiscountDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/DiscountDaoImp.java" afterDir="false" />
+    <list default="true" id="5ac6ee45-af90-4b8c-90f8-b8922338237b" name="Changes" comment="dao 1.0.5.2 finished DiscountDaoImp class.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/DaoFactoryAbst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/DaoFactoryAbst.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/FactoryDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/FactoryDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/TariffDaoImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/TariffDaoImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/entity/Discount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/entity/Discount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/entity/Tariff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/entity/Tariff.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/a_test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/a_test/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/DiscountDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/DiscountDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/DiscountDaoImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/DiscountDaoImp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,7 +193,7 @@
       <workItem from="1667602789765" duration="14946000" />
       <workItem from="1667688040868" duration="4998000" />
       <workItem from="1667776406952" duration="1948000" />
-      <workItem from="1667778672031" duration="11355000" />
+      <workItem from="1667778672031" duration="21045000" />
     </task>
     <task id="LOCAL-00001" summary="dao 1.0.0">
       <created>1666736865878</created>
@@ -388,7 +384,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667785837919</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="dao 1.0.5.2 finished DiscountDaoImp class.">
+      <created>1667791352608</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1667791352608</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -406,7 +409,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="dao 1.0.2 Checked all UserDaoImpl methods" />
     <MESSAGE value="dao 1.0.3 all methods in UserDaoImpl was tasted manually" />
     <MESSAGE value="dao 1.0.3.1" />
     <MESSAGE value="dao 1.0.3.2 Added GeolocationPoint class" />
@@ -431,7 +433,8 @@
     <MESSAGE value="dao 1.0.4.9 TariffDaoImp is completed. Only create method was tested." />
     <MESSAGE value="dao 1.0.5.0 All methods in TariffDaoImp were checked" />
     <MESSAGE value="dao 1.0.5.1 finished the Discount class." />
-    <option name="LAST_COMMIT_MESSAGE" value="dao 1.0.5.1 finished the Discount class." />
+    <MESSAGE value="dao 1.0.5.2 finished DiscountDaoImp class." />
+    <option name="LAST_COMMIT_MESSAGE" value="dao 1.0.5.2 finished DiscountDaoImp class." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

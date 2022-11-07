@@ -22,6 +22,80 @@ public class Main {
         UserRoleDao userRoleDao = factoryDao.createUserRoleDao();
         CarCategoryDao carCategoryDao = factoryDao.createCarCategoryDao();
         CarDao carDao = factoryDao.createCarDao();
+        TariffDao tariffDao = factoryDao.createTariffDao();
+        DiscountDao discountDao = factoryDao.createDiscountDao();
+
+        // getValidDiscountsOnDate(LocalDate localDate)
+        LocalDate localDate = LocalDate.of(2022, 11, 8);
+        System.out.println(localDate);
+        List<Discount> discountList = discountDao.getValidDiscountsOnDate(localDate);
+        for(Discount discount:discountList){
+            System.out.println(discount);
+        }
+        System.out.println("========================================================================");
+
+        // getValidDiscountOnDateAndSum(LocalDate localDate, double sumOfCustomerOrders)
+        Discount discount = discountDao.getValidDiscountOnDateAndSum(localDate,3500);
+        System.out.println(discount);
+
+
+
+//        double percentPace = 0;
+//        double sumConditionPace = 1000;
+//        for (int j = 4; j <=14 ; j++) {
+//
+//
+//            LocalDate localDate = LocalDate.of(2022, 11, j);
+//            percentPace+= 0.25;
+//            for (int i = 1; i <= 10; i++) {
+//
+//                Discount discount = new Discount();
+//                discount.setDiscountLevel(i);
+//                discount.setEffectiveDate(localDate);
+//                discount.setTotalSumCondition(sumConditionPace * i);
+//                discount.setDiscountPercentage(percentPace * i);
+//                System.out.println(discount);
+//                discount = discountDao.create(discount);
+//
+//            }
+//        }
+
+//        //findAll
+//        //delete
+//        List<Discount> discountList = new ArrayList<>();
+//        discountList = discountDao.findAll();
+//        for(Discount discount:discountList){
+//            discountDao.delete(discount.getId());
+//        }
+
+
+//        //findById
+//        Discount discount = discountDao.findById(115);
+//        System.out.println(discount);
+
+
+//        //update
+//        Discount discount = discountDao.findById(125);
+//        System.out.println(discount);
+//        discount.setDiscountPercentage(2.51);
+//        discount.setTotalSumCondition(2015);
+//        discountDao.update(discount);
+//        System.out.println(discount);
+
+
+
+
+
+    }
+
+    public void test_Tariff(){
+
+        FactoryDao factoryDao = new FactoryDao();
+        RoleDao roleDao = factoryDao.createRoleDao();
+        UserDao userDao = factoryDao.createUserDao();
+        UserRoleDao userRoleDao = factoryDao.createUserRoleDao();
+        CarCategoryDao carCategoryDao = factoryDao.createCarCategoryDao();
+        CarDao carDao = factoryDao.createCarDao();
 
         TariffDao tariffDao = factoryDao.createTariffDao();
 
@@ -70,7 +144,7 @@ public class Main {
 //        tariffDao.update(tariff);
 //        System.out.println(tariff);
 
-    // getTariffOnDate
+        // getTariffOnDate
 
         LocalDate localDate =  LocalDate.of(2022,11,4);
         CarCategory standardCarCategory = carCategoryDao.findById(1);
@@ -80,8 +154,6 @@ public class Main {
 
         Tariff tariff = tariffDao.getTariffOnDate(localDate,luxCarCategory);
         System.out.println(tariff);
-
-
 
 
     }

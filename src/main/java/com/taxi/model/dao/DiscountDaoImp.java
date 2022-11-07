@@ -39,12 +39,12 @@ public class DiscountDaoImp implements DiscountDao{
 
 
         final String QUERY = """
-                INSERT into tariffs
+                INSERT into discounts
                 (
                 effective_date,
-                discountLevel,
-                totalSumCondition,
-                discountPercentage
+                discount_level,
+                total_sum_condition,
+                discount_percentage
                 ) VALUES (?,?,?,?) 
                 """;
 
@@ -133,8 +133,6 @@ public class DiscountDaoImp implements DiscountDao{
         select *
         from
         discounts
-        where
-        discounts.id = ?
         """;
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(QUERY)) {
@@ -172,7 +170,7 @@ public class DiscountDaoImp implements DiscountDao{
         if(EFFECTIVE_DATE.isBefore(LocalDate.now()) || EFFECTIVE_DATE.isEqual(LocalDate.now())){
             StringBuffer stringBuffer = new StringBuffer();
             stringBuffer
-                    .append("You have tried to update a discount which effective date is")
+                    .append("You have tried to update a discount which effective date is ")
                     .append(EFFECTIVE_DATE)
                     .append(", which is equal or less then today's date ")
                     .append(LocalDate.now())
@@ -182,7 +180,7 @@ public class DiscountDaoImp implements DiscountDao{
 
 
         final String UPDATE_QUERY = """
-                UPDATE tariffs 
+                UPDATE discounts 
                 SET 
                 effective_date=?,
                 discount_level =?,
@@ -193,7 +191,7 @@ public class DiscountDaoImp implements DiscountDao{
 
         try(PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_QUERY)){
 
-            System.out.println(connection);
+
 
             preparedStatement.setTimestamp(1, Timestamp.valueOf(discount.getEffectiveDate().atStartOfDay()));
             preparedStatement.setInt( 2, discount.getDiscountLevel());
@@ -217,6 +215,8 @@ public class DiscountDaoImp implements DiscountDao{
             throw new RuntimeException(e);
         }
     }
+
+
 
     @Override
     public boolean delete(int id) {
@@ -242,6 +242,105 @@ public class DiscountDaoImp implements DiscountDao{
             preparedStatement.setInt(1, id);
             return preparedStatement.executeUpdate()>0;
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public List<Discount> getValidDiscountsOnDate(LocalDate localDate) {
+
+        final String QUERY = """
+                select
+                d.id,
+                d.discount_level,
+                d.effective_date,
+                d.total_sum_condition,
+                d.discount_percentage
+                from
+                discounts as d
+                inner join
+                (select
+                discount_level,
+                max(effective_date) as effective_date
+                from
+                discounts
+                where effective_date <= ?
+                group by discount_level) as selection_condition
+                on
+                d.effective_date = selection_condition.effective_date
+                and
+                d.discount_level = selection_condition.discount_level                
+                """;
+
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(QUERY)) {
+            preparedStatement.setTimestamp(1, Timestamp.valueOf(localDate.atStartOfDay()));
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            List<Discount> discountList = new ArrayList<>();
+            Discount discount;
+            while (resultSet.next()){
+                discount = extractDiscountFromResultSet(resultSet);
+                discountList.add(discount);
+            }
+            return discountList;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public Discount getValidDiscountOnDateAndSum(LocalDate localDate, double sumOfCustomerOrders) {
+       final String QUERY = """        
+               select
+               -- main request
+               d.id,
+               d.discount_level,
+               d.effective_date,
+               d.total_sum_condition,
+               d.discount_percentage
+               from
+               discounts as d
+               -- condition for selecting valid discounts for the date and amount
+               inner join
+               (select
+               discount_level,
+               max(effective_date) as effective_date
+               from
+               discounts
+               where effective_date <= ? -- Parameter 1 localDate
+               group by discount_level) as selection_condition
+               on
+               d.effective_date = selection_condition.effective_date
+               and
+               d.discount_level = selection_condition.discount_level
+               and 
+               d.total_sum_condition <= ? -- Parameter 2 - sumOfCustomerOrders
+               order by
+               d.discount_percentage desc,
+               d.total_sum_condition desc,
+               d.discount_level desc,
+               d.effective_date desc
+               limit 1                        
+               """;
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(QUERY)) {
+
+
+            preparedStatement.setTimestamp(1,Timestamp.valueOf(localDate.atStartOfDay()));
+            preparedStatement.setDouble(2,sumOfCustomerOrders);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                Discount discount = extractDiscountFromResultSet(resultSet);
+                return discount;
+            } else {
+                return null;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
