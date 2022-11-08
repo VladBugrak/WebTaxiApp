@@ -5,12 +5,62 @@ import com.taxi.model.entity.*;
 
 import java.time.LocalDate;
 //import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
 
+        DaoFactory daoFactory = new DaoFactory();
+        RoleDao roleDao = daoFactory.createRoleDao();
+        UserDao userDao = daoFactory.createUserDao();
+        UserRoleDao userRoleDao = daoFactory.createUserRoleDao();
+        CarCategoryDao carCategoryDao = daoFactory.createCarCategoryDao();
+        CarDao carDao = daoFactory.createCarDao();
+        TariffDao tariffDao = daoFactory.createTariffDao();
+        DiscountDao discountDao = daoFactory.createDiscountDao();
+        CarStatusDoa  carStatusDoa = daoFactory.createCarStatusDao();
+
+
+//        //create
+//        CarStatus carStatus = new CarStatus();
+//        carStatus.setName("test for delete");
+//        carStatus.setNameUA("тест для видалення");
+//        System.out.println(carStatus);
+//        carStatusDoa.create(carStatus);
+//        System.out.println(carStatus);
+
+//        //findById
+//        CarStatus carStatus = carStatusDoa.findById(4);
+//        System.out.println(carStatus);
+
+//        //findAll
+//        List<CarStatus> carStatusList = new ArrayList<>();
+//        carStatusList = carStatusDoa.findAll();
+//        for(CarStatus carStatus: carStatusList){
+//            System.out.println(carStatus);
+//        }
+
+//        //update
+//        CarStatus carStatus = carStatusDoa.findById(3);
+//        System.out.println(carStatus);
+//        carStatus.setName("waiting for a call");
+//        carStatusDoa.update(carStatus);
+//        System.out.println(carStatus);
+
+        //delete
+        CarStatus carStatus = carStatusDoa.findById(7);
+        System.out.println(carStatus);
+        carStatusDoa.delete(carStatus.getId());
+
+
+
+
+
+    }
+
+    public void test_discount(){
         DaoFactory daoFactory = new DaoFactory();
         RoleDao roleDao = daoFactory.createRoleDao();
         UserDao userDao = daoFactory.createUserDao();
@@ -78,77 +128,10 @@ public class Main {
 //        System.out.println(discount);
 
 
-
-
-
     }
 
     public void test_Tariff(){
 
-        DaoFactory daoFactory = new DaoFactory();
-        RoleDao roleDao = daoFactory.createRoleDao();
-        UserDao userDao = daoFactory.createUserDao();
-        UserRoleDao userRoleDao = daoFactory.createUserRoleDao();
-        CarCategoryDao carCategoryDao = daoFactory.createCarCategoryDao();
-        CarDao carDao = daoFactory.createCarDao();
-
-        TariffDao tariffDao = daoFactory.createTariffDao();
-
-
-
-
-//        //Create
-//        Tariff tariff = new Tariff();
-//        CarCategory standardCarCategory = carCategoryDao.findById(1);
-//        CarCategory luxCarCategory = carCategoryDao.findById(2);
-//        CarCategory microBusCarCategory = carCategoryDao.findById(3);
-//        LocalDate localDate = LocalDate.now().plusDays(1);
-//
-//        tariff.setEffectiveData(localDate);
-//        tariff.setCarCategory(microBusCarCategory);
-//        tariff.setFareForCall(80);
-//        tariff.setFarePerKm(8);
-//
-//        System.out.println(tariff);
-//        tariff = tariffDao.create(tariff);
-//        System.out.println(tariff);
-
-//        //findByID
-//        Tariff tariff = tariffDao.findById(40);
-//        System.out.println(tariff);
-
-//        //findALL
-//        List<Tariff> tariffList = new ArrayList<>();
-//        tariffList = tariffDao.findAll();
-//        for(Tariff tariff:tariffList){
-//            System.out.println(tariff);
-//        }
-
-
-//        //update
-//        Tariff tariff = tariffDao.findById(12);
-//        System.out.println(tariff);
-////        tariff.setFareForCall(45);
-////        tariff.setFarePerKm(4.5);
-//        tariff.setFarePerKm(tariff.getFarePerKm() * 1.33);
-//        tariff.setFareForCall(tariff.getFareForCall() * 1.33);
-////        CarCategory carCategory = carCategoryDao.findById(2);
-////        System.out.println(carCategory);
-////        tariff.setCarCategory(carCategory);
-//
-//        tariffDao.update(tariff);
-//        System.out.println(tariff);
-
-        // getTariffOnDate
-
-        LocalDate localDate =  LocalDate.of(2022,11,4);
-        CarCategory standardCarCategory = carCategoryDao.findById(1);
-        CarCategory luxCarCategory = carCategoryDao.findById(2);
-        CarCategory microBusCarCategory = carCategoryDao.findById(3);
-
-
-        Tariff tariff = tariffDao.getTariffOnDate(localDate,luxCarCategory);
-        System.out.println(tariff);
 
 
     }
