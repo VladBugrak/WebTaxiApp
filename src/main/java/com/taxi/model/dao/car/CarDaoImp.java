@@ -1,9 +1,11 @@
-package com.taxi.model.dao;
+package com.taxi.model.dao.car;
 
 import com.taxi.controller.exceptions.NonUniqueObjectException;
 import com.taxi.controller.exceptions.ObjectNotFoundException;
+import com.taxi.model.dao.car.CarDao;
 import com.taxi.model.entity.Car;
 import com.taxi.model.entity.CarCategory;
+import com.taxi.model.entity.CarStatus;
 
 
 import java.sql.*;
@@ -14,31 +16,37 @@ public class CarDaoImp implements CarDao {
 
     private Connection connection;
 
-    CarDaoImp(Connection connection) {
+    protected CarDaoImp(Connection connection) {
 
         this.connection = connection;
     }
 
     final String SEARCHING_QUERY = """
-            Select
-            -- Car fields:
-            c.id,
-            c.plate_number,
-            c.model,
-            c.color,
-            c.color_ua,
-            c.car_category_id,
-            c.capacity,
-            c.image_link,
-            -- CarCategory fields
-            cc.id as cc_id,
-            cc.name as cc_name,
-            cc.name_ua as cc_name_ua
-            --
-            from cars as c
-            inner join
-            car_category as cc
-            on c.car_category_id = cc.id
+            SELECT
+                                      -- Car object's fields
+                                          c.id,
+                                          c.plate_number,
+                                          c.model,
+                                          c.color,
+                                          c.color_ua,
+                                          c.car_category_id,
+                                          c.car_status_id,
+                                          c.capacity,
+                                          c.image_link,
+                                      -- CarCategory object's fields
+                                          cc.id AS cc_id,
+                                          cc.name AS cc_name,
+                                          cc.name_ua AS cc_name_ua,
+                                      -- CarStatus object's fields
+                                          cs.id AS cs_id,
+                                          cs.name AS cs_name,
+                                          cs.name_ua AS cs_name_ua
+                                      FROM
+                                          cars AS c
+                                              INNER JOIN
+                                          car_category AS cc ON c.car_category_id = cc.id
+                                              INNER JOIN
+                                          car_status AS cs ON c.car_status_id = cs.id
             """;
 
 
@@ -52,9 +60,10 @@ public class CarDaoImp implements CarDao {
                             color, 
                             color_ua,
                             car_category_id,
+                            car_status_id,
                             capacity,
                             image_link
-                            ) VALUES(?, ?, ?, ?, ?, ?, ?)
+                            ) VALUES(?, ?, ?, ?, ?, ?, ?, ?)
                 """;
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
@@ -65,8 +74,9 @@ public class CarDaoImp implements CarDao {
             preparedStatement.setString(3, car.getColor());
             preparedStatement.setString(4, car.getColorUA());
             preparedStatement.setInt(5, car.getCarCategory().getId());
-            preparedStatement.setInt(6, car.getCapacity());
-            preparedStatement.setString(7, car.getImageLink());
+            preparedStatement.setInt(6, car.getCarStatus().getId());
+            preparedStatement.setInt(7, car.getCapacity());
+            preparedStatement.setString(8, car.getImageLink());
 
             preparedStatement.execute();
 
@@ -101,13 +111,22 @@ public class CarDaoImp implements CarDao {
         carCategory.setNameUA(resultSet.getString("cc_name_ua"));
         return carCategory;
 
+    }
 
+    private CarStatus extractCarStatusFromResultSet(ResultSet resultSet) throws SQLException{
+
+        CarStatus carStatus = new CarStatus();
+        carStatus.setId(resultSet.getInt("cs_id"));
+        carStatus.setName(resultSet.getString("cs_name"));
+        carStatus.setNameUA(resultSet.getString("cs_name_ua"));
+        return carStatus;
 
     }
 
     private Car extractCarFromResultSet(ResultSet resultSet) throws SQLException {
 
         CarCategory carCategory = extractCarCategoryFromResultSet(resultSet);
+        CarStatus carStatus = extractCarStatusFromResultSet(resultSet);
 
         Car car = new Car();
         car.setId(resultSet.getInt("id"));
@@ -116,6 +135,7 @@ public class CarDaoImp implements CarDao {
         car.setColor(resultSet.getString("color"));
         car.setColorUA(resultSet.getString("color_ua"));
         car.setCarCategory(carCategory);
+        car.setCarStatus(carStatus);
         car.setCapacity(resultSet.getInt("capacity"));
         car.setImageLink(resultSet.getString("image_link"));
 

@@ -1,4 +1,4 @@
-package com.taxi.model.dao;
+package com.taxi.model.dao.tariff;
 
 import com.taxi.controller.exceptions.NonUniqueObjectException;
 import com.taxi.controller.exceptions.ObjectNotFoundException;
@@ -15,8 +15,7 @@ public class TariffDaoImp implements TariffDao{
 
     private Connection connection;
 
-    TariffDaoImp(Connection connection) {
-
+    protected TariffDaoImp(Connection connection) {
         this.connection = connection;
     }
 

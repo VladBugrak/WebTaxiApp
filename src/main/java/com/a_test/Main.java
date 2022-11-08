@@ -1,11 +1,19 @@
 package com.a_test;
 
 import com.taxi.model.dao.*;
+import com.taxi.model.dao.tariff.TariffDao;
+import com.taxi.model.dao.car.CarDao;
+import com.taxi.model.dao.car_category.CarCategoryDao;
+import com.taxi.model.dao.car_status.CarStatusDoa;
+import com.taxi.model.dao.discount.DiscountDao;
+import com.taxi.model.dao.geo_point.GeoPointDao;
+import com.taxi.model.dao.role.RoleDao;
+import com.taxi.model.dao.user.UserDao;
+import com.taxi.model.dao.user_role.UserRoleDao;
 import com.taxi.model.entity.*;
 
 import java.time.LocalDate;
-//import java.util.Date;
-import java.util.ArrayList;
+
 import java.util.List;
 
 public class Main {
@@ -20,7 +28,32 @@ public class Main {
         CarDao carDao = daoFactory.createCarDao();
         TariffDao tariffDao = daoFactory.createTariffDao();
         DiscountDao discountDao = daoFactory.createDiscountDao();
-        CarStatusDoa  carStatusDoa = daoFactory.createCarStatusDao();
+        CarStatusDoa carStatusDoa = daoFactory.createCarStatusDao();
+
+
+
+        Car car = carDao.findById(1);
+        System.out.println(car);
+
+
+
+
+
+
+
+
+    }
+
+    public void test_carStatus(){
+        DaoFactory daoFactory = new DaoFactory();
+        RoleDao roleDao = daoFactory.createRoleDao();
+        UserDao userDao = daoFactory.createUserDao();
+        UserRoleDao userRoleDao = daoFactory.createUserRoleDao();
+        CarCategoryDao carCategoryDao = daoFactory.createCarCategoryDao();
+        CarDao carDao = daoFactory.createCarDao();
+        TariffDao tariffDao = daoFactory.createTariffDao();
+        DiscountDao discountDao = daoFactory.createDiscountDao();
+        CarStatusDoa carStatusDoa = daoFactory.createCarStatusDao();
 
 
 //        //create
@@ -53,8 +86,6 @@ public class Main {
         CarStatus carStatus = carStatusDoa.findById(7);
         System.out.println(carStatus);
         carStatusDoa.delete(carStatus.getId());
-
-
 
 
 

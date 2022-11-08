@@ -1,46 +1,44 @@
-package com.taxi.model.dao;
+package com.taxi.model.dao.car_status;
 
 import com.taxi.controller.exceptions.NonUniqueObjectException;
 import com.taxi.controller.exceptions.ObjectNotFoundException;
-import com.taxi.model.entity.GeoPoint;
+import com.taxi.model.dao.car_status.CarStatusDoa;
+import com.taxi.model.entity.CarStatus;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GeoPointDaoImp implements GeoPointDao {
+public class CarStatusDoaImp implements CarStatusDoa {
 
     private Connection connection;
 
-    GeoPointDaoImp(Connection connection) {
+    protected CarStatusDoaImp(Connection connection) {
         this.connection = connection;
     }
 
     @Override
-    public GeoPoint create(GeoPoint geoPoint) {
+    public CarStatus create(CarStatus carStatus) {
         String query = """                    
-                            INSERT into geolocation_point 
+                            INSERT into car_status 
                             ( 
-                            name, 
-                            latitude, 
-                            longitude                     
-                            ) VALUES(?, ?, ?);
+                            name,
+                            name_ua                    
+                            ) VALUES(?,?);
                 """;
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
 
-
-            preparedStatement.setString(1, geoPoint.getName());
-            preparedStatement.setDouble(2,geoPoint.getLatitude());
-            preparedStatement.setDouble(3,geoPoint.getLongitude());
+            preparedStatement.setString(1, carStatus.getName());
+            preparedStatement.setString(2, carStatus.getNameUA());
             preparedStatement.execute();
 
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
 
             if (resultSet.next()) {
-                geoPoint.setId(resultSet.getInt(1));
+                carStatus.setId(resultSet.getInt(1));
 
-                return geoPoint;
+                return carStatus;
             } else {
                 return null;
             }
@@ -48,35 +46,37 @@ public class GeoPointDaoImp implements GeoPointDao {
         } catch (SQLIntegrityConstraintViolationException e) {
             StringBuffer stringBuffer = new StringBuffer();
             stringBuffer
-                    .append("Geolocation point with latitude =")
-                    .append(geoPoint.getLatitude())
-                    .append(" and longitude =")
-                    .append(geoPoint.getLongitude())
-                    .append(" already exist");
+                    .append("Either car status  with name = \"")
+                    .append(carStatus.getName())
+                    .append("\" already exist")
+                    .append(" or car status  with nameUA = \"")
+                    .append(carStatus.getNameUA())
+                    .append("\" already exist")
+            ;
+
 
             throw new NonUniqueObjectException( stringBuffer.toString());
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
-
     }
 
-    private GeoPoint extractGeoPointFromResultSet(ResultSet resultSet) throws SQLException {
+    private CarStatus extractCarStatusFromResultSet(ResultSet resultSet) throws SQLException {
 
-       GeoPoint geoPoint = new GeoPoint();
-       geoPoint.setId(resultSet.getInt("id"));
-       geoPoint.setName(resultSet.getString("name"));
-       geoPoint.setLatitude(resultSet.getDouble("latitude"));
-       geoPoint.setLongitude(resultSet.getDouble("longitude"));
+        CarStatus carStatus = new CarStatus();
+        carStatus.setId(resultSet.getInt("id"));
+        carStatus.setName(resultSet.getString("name"));
+        carStatus.setNameUA(resultSet.getString("name_ua"));
 
-       return geoPoint;
+
+        return carStatus;
     }
 
     @Override
-    public GeoPoint findById(int id) {
+    public CarStatus findById(int id) {
         String query = """
-                SELECT * from geolocation_point where id=?;
+                SELECT * from car_status where id=?;
                 """;
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -86,10 +86,15 @@ public class GeoPointDaoImp implements GeoPointDao {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
-                GeoPoint geoPoint = extractGeoPointFromResultSet(resultSet);
-                return geoPoint;
+                CarStatus carStatus = extractCarStatusFromResultSet(resultSet);
+                return carStatus;
             } else {
-                return null;
+                StringBuffer stringBuffer = new StringBuffer();
+                stringBuffer
+                        .append("The CarCategory object with id =")
+                        .append(id)
+                        .append(" does not exist in the data base.");
+                throw  new ObjectNotFoundException(stringBuffer.toString());
             }
 
         } catch (SQLException e) {
@@ -99,48 +104,47 @@ public class GeoPointDaoImp implements GeoPointDao {
     }
 
     @Override
-    public List<GeoPoint> findAll() {
+    public List<CarStatus> findAll() {
         String query = """
-                SELECT * from geolocation_point;
+                SELECT * from car_status;
                 """;
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            List<GeoPoint> geoPointList = new ArrayList<>();
-            GeoPoint geoPoint;
+            List<CarStatus> carStatusList = new ArrayList<>();
+            CarStatus carStatus;
             while (resultSet.next()){
-                geoPoint = extractGeoPointFromResultSet(resultSet);
-                geoPointList.add(geoPoint);
+                carStatus = extractCarStatusFromResultSet(resultSet);
+                carStatusList.add(carStatus);
             }
-            return geoPointList;
+            return carStatusList;
 
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
+
     }
 
     @Override
-    public boolean update(GeoPoint geoPoint) {
-
-        if(findById(geoPoint.getId()) == null){
+    public boolean update(CarStatus carStatus) {
+        if(findById(carStatus.getId()) == null){
 
             StringBuffer stringBuffer = new StringBuffer();
             stringBuffer
-                    .append("The GeoPoint object with id =")
-                    .append(geoPoint.getId())
+                    .append("The CarStatus object with id =")
+                    .append(carStatus.getId())
                     .append(" does not exist in the data base. So you can't update it");
             throw  new ObjectNotFoundException(stringBuffer.toString());
         }
 
         String query = """
-                UPDATE geolocation_point 
+                UPDATE car_status 
                 SET 
                 name=?,
-                latitude=?, 
-                longitude=?       
+                name_ua=?                   
                 where id=?
                 """;
 
@@ -149,10 +153,10 @@ public class GeoPointDaoImp implements GeoPointDao {
 
 
 
-            preparedStatement.setString(1,geoPoint.getName());
-            preparedStatement.setDouble(2,geoPoint.getLatitude());
-            preparedStatement.setDouble(3,geoPoint.getLongitude());
-            preparedStatement.setDouble(4,geoPoint.getId());
+            preparedStatement.setString(1,carStatus.getName());
+            preparedStatement.setString(2,carStatus.getNameUA());
+            preparedStatement.setInt(3,carStatus.getId());
+
 
             return preparedStatement.executeUpdate()>0;
 
@@ -164,20 +168,18 @@ public class GeoPointDaoImp implements GeoPointDao {
 
     @Override
     public boolean delete(int id) {
-
         if(findById(id) == null){
 
             StringBuffer stringBuffer = new StringBuffer();
             stringBuffer
-                    .append("The GeoPoint object with id =")
+                    .append("The CarStatus object with id =")
                     .append(id)
                     .append(" does not exist in the data base. So you can't delete it");
             throw  new ObjectNotFoundException(stringBuffer.toString());
         }
 
-
         String query = """           
-               DELETE from geolocation_point 
+               DELETE from car_status 
                where id=?;
                 """;
 
@@ -193,6 +195,7 @@ public class GeoPointDaoImp implements GeoPointDao {
             throw new RuntimeException(e);
         }
     }
+
 
     @Override
     public void close() {

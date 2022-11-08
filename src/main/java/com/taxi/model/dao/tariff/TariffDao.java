@@ -1,6 +1,7 @@
-package com.taxi.model.dao;
+package com.taxi.model.dao.tariff;
 
 
+import com.taxi.model.dao.GenericDao;
 import com.taxi.model.entity.CarCategory;
 import com.taxi.model.entity.Tariff;
 

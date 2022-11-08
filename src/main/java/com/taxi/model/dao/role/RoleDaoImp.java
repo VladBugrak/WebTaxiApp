@@ -1,4 +1,4 @@
-package com.taxi.model.dao;
+package com.taxi.model.dao.role;
 
 import com.taxi.controller.exceptions.NonUniqueObjectException;
 import com.taxi.controller.exceptions.ObjectNotFoundException;
@@ -12,7 +12,7 @@ public class RoleDaoImp implements RoleDao {
 
     private Connection connection;
 
-    RoleDaoImp(Connection connection) {
+    protected RoleDaoImp(Connection connection) {
 
         this.connection = connection;
     }

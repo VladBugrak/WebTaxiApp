@@ -1,4 +1,4 @@
-package com.taxi.model.dao;
+package com.taxi.model.dao.user_role;
 
 import com.taxi.controller.exceptions.NonUniqueObjectException;
 import com.taxi.model.entity.Role;
@@ -14,7 +14,7 @@ public class UserRoleDaoImp implements UserRoleDao{
 
     private Connection connection;
 
-    public UserRoleDaoImp(Connection connection) {
+    protected UserRoleDaoImp(Connection connection) {
         this.connection = connection;
     }
 

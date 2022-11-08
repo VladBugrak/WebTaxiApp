@@ -1,18 +1,19 @@
-package com.taxi.model.dao;
+package com.taxi.model.dao.car_category;
 
 import com.taxi.controller.exceptions.NonUniqueObjectException;
 import com.taxi.controller.exceptions.ObjectNotFoundException;
+import com.taxi.model.dao.car_category.CarCategoryDao;
 import com.taxi.model.entity.CarCategory;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarCategoryDaoImp implements CarCategoryDao{
+public class CarCategoryDaoImp implements CarCategoryDao {
 
     private Connection connection;
 
-    CarCategoryDaoImp(Connection connection) {
+    protected CarCategoryDaoImp(Connection connection) {
         this.connection = connection;
     }
 

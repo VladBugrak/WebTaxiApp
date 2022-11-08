@@ -1,5 +1,6 @@
-package com.taxi.model.dao;
+package com.taxi.model.dao.user;
 
+import com.taxi.model.dao.GenericDao;
 import com.taxi.model.entity.Role;
 import com.taxi.model.entity.User;
 

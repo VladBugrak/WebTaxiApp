@@ -1,4 +1,4 @@
-package com.taxi.model.dao;
+package com.taxi.model.dao.user_role;
 
 import com.taxi.model.entity.Role;
 import com.taxi.model.entity.User;

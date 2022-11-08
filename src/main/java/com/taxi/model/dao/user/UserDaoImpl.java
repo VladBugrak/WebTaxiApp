@@ -1,4 +1,4 @@
-package com.taxi.model.dao;
+package com.taxi.model.dao.user;
 
 import com.taxi.controller.exceptions.ObjectNotFoundException;
 import com.taxi.controller.exceptions.NonUniqueObjectException;
@@ -15,8 +15,7 @@ public class UserDaoImpl implements UserDao {
 
     private Connection connection;
 
-    UserDaoImpl(Connection connection) {
-
+    protected UserDaoImpl(Connection connection) {
         this.connection = connection;
     }
 

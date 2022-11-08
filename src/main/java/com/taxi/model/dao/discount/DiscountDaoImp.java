@@ -1,22 +1,21 @@
-package com.taxi.model.dao;
+package com.taxi.model.dao.discount;
 
 import com.taxi.controller.exceptions.NonUniqueObjectException;
 import com.taxi.controller.exceptions.ObjectNotFoundException;
 import com.taxi.controller.exceptions.PastDateEditingException;
-import com.taxi.model.entity.CarCategory;
+import com.taxi.model.dao.discount.DiscountDao;
 import com.taxi.model.entity.Discount;
-import com.taxi.model.entity.Tariff;
 
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DiscountDaoImp implements DiscountDao{
+public class DiscountDaoImp implements DiscountDao {
 
     private Connection connection;
 
-    DiscountDaoImp(Connection connection) {
+    protected DiscountDaoImp(Connection connection) {
         this.connection = connection;
     }
 

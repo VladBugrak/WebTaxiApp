@@ -1,8 +1,11 @@
 package com.taxi.model.entity;
 
+import com.taxi.model.dao.ObjectExistenceCheckIn;
+
 import java.util.Objects;
 
-public class Car {
+public class Car implements ObjectExistenceCheckIn {
+
 
     private int id;
     private String plateNumber;
@@ -12,29 +15,31 @@ public class Car {
     private CarCategory carCategory;
     private int capacity;
 
+    private CarStatus carStatus;
+
     private String imageLink;
+
+    private final static String DATA_BASE_TABLE_NAME = "cars";
+
+
 
     public Car() {
     }
 
-    public Car(int id, String plateNumber, String model, String color, String colorUA, CarCategory carCategory, int capacity, String imageLink) {
-        this.id = id;
-        this.plateNumber = plateNumber;
-        this.model = model;
-        this.color = color;
-        this.colorUA = colorUA;
-        this.carCategory = carCategory;
-        this.capacity = capacity;
-        this.imageLink = imageLink;
-    }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(int id){
         this.id = id;
     }
+
+    public String getDataBaseTableName(){
+        return  DATA_BASE_TABLE_NAME;
+    }
+
+
 
     public String getPlateNumber() {
         return plateNumber;
@@ -92,6 +97,13 @@ public class Car {
         this.imageLink = imageLink;
     }
 
+    public CarStatus getCarStatus() {
+        return carStatus;
+    }
+
+    public void setCarStatus(CarStatus carStatus) {
+        this.carStatus = carStatus;
+    }
 
     @Override
     public String toString() {
@@ -103,28 +115,21 @@ public class Car {
                 ", colorUA='" + colorUA + '\'' +
                 ", carCategory=" + carCategory +
                 ", capacity=" + capacity +
+                ", carStatus=" + carStatus +
                 ", imageLink='" + imageLink + '\'' +
                 '}';
     }
-
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return id == car.id
-                && capacity == car.capacity
-                && Objects.equals(plateNumber, car.plateNumber)
-                && Objects.equals(model, car.model)
-                && Objects.equals(color, car.color)
-                && Objects.equals(colorUA, car.colorUA)
-                && Objects.equals(carCategory, car.carCategory)
-                && Objects.equals(imageLink, car.imageLink);
+        return id == car.id && capacity == car.capacity && plateNumber.equals(car.plateNumber) && model.equals(car.model) && color.equals(car.color) && colorUA.equals(car.colorUA) && carCategory.equals(car.carCategory) && carStatus.equals(car.carStatus) && Objects.equals(imageLink, car.imageLink);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, plateNumber, model, color, colorUA, carCategory, capacity, imageLink);
+        return Objects.hash(id, plateNumber, model, color, colorUA, carCategory, capacity, carStatus, imageLink);
     }
 }
