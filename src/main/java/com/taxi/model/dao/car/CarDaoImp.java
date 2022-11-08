@@ -2,6 +2,7 @@ package com.taxi.model.dao.car;
 
 import com.taxi.controller.exceptions.NonUniqueObjectException;
 import com.taxi.controller.exceptions.ObjectNotFoundException;
+import com.taxi.model.dao.ObjectExistenceCheckIn;
 import com.taxi.model.dao.car.CarDao;
 import com.taxi.model.entity.Car;
 import com.taxi.model.entity.CarCategory;
@@ -143,10 +144,25 @@ public class CarDaoImp implements CarDao {
 
     }
 
+    private void testExistence(){
+
+        for (int i = 0;  i < 30; i++) {
+            Car car = new Car();
+            car.setId(i);
+
+            boolean isExist = ObjectExistenceCheckIn.isExist(car,connection);
+            System.out.println("" + i + " " + isExist);
+
+        }
+
+    }
+
 
 
     @Override
     public Car findById(int id) {
+
+        testExistence();
 
        final String QUERY  = SEARCHING_QUERY + "where c.id=?";
 

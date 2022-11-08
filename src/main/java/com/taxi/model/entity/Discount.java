@@ -1,11 +1,12 @@
 package com.taxi.model.entity;
 
 
+import com.taxi.model.dao.ObjectExistenceCheckIn;
 import com.taxi.util.MyMath;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Discount {
+public class Discount implements ObjectExistenceCheckIn {
 
 
     private int id;
@@ -16,6 +17,8 @@ public class Discount {
 
     final int MAX_DISCOUNT_LEVEL = 10;
 
+    private final static String DATA_BASE_TABLE_NAME = "discounts";
+
     public Discount() {
     }
 
@@ -24,6 +27,10 @@ public class Discount {
         this.discountLevel = discountLevel;
         this.totalSumCondition = totalSumCondition;
         this.discountPercentage = discountPercentage;
+    }
+
+    public String getDataBaseTableName(){
+        return  DATA_BASE_TABLE_NAME;
     }
 
     public int getId() {

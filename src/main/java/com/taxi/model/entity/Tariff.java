@@ -1,17 +1,19 @@
 package com.taxi.model.entity;
 
+import com.taxi.model.dao.ObjectExistenceCheckIn;
 import com.taxi.util.MyMath;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Tariff {
+public class Tariff implements ObjectExistenceCheckIn {
 
     private int id;
     private LocalDate effectiveDate;
     private CarCategory carCategory;
     private double fareForCall;
     private double farePerKm;
+    private final static String DATA_BASE_TABLE_NAME = "tariffs";
 
     public Tariff() {
     }
@@ -22,6 +24,9 @@ public class Tariff {
         this.carCategory = carCategory;
         this.fareForCall = fareForCall;
         this.farePerKm = farePerKm;
+    }
+    public String getDataBaseTableName(){
+        return  DATA_BASE_TABLE_NAME;
     }
 
     public int getId() {

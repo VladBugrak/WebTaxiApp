@@ -25,8 +25,6 @@ public interface ObjectExistenceCheckIn {
                 .append(object.getId());
         final String QUERY = stringBuilder.toString();
 
-         System.out.println(QUERY);
-
          try (PreparedStatement preparedStatement = connection.prepareStatement(QUERY)) {
 
             ResultSet resultSet = preparedStatement.executeQuery();

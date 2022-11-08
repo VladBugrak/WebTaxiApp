@@ -1,12 +1,16 @@
 package com.taxi.model.entity;
 
+import com.taxi.model.dao.ObjectExistenceCheckIn;
+
 import java.util.Objects;
 
-public class Role {
+public class Role implements ObjectExistenceCheckIn {
 
     private int id;
     private String name;
     private String nameUA;
+
+    private final static String DATA_BASE_TABLE_NAME = "roles";
 
     public Role() {
     }
@@ -15,6 +19,9 @@ public class Role {
         this.id = id;
         this.name = name;
         this.nameUA = nameUA;
+    }
+    public String getDataBaseTableName(){
+        return  DATA_BASE_TABLE_NAME;
     }
 
     public int getId() {

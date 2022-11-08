@@ -1,13 +1,17 @@
 package com.taxi.model.entity;
 
+import com.taxi.model.dao.ObjectExistenceCheckIn;
+
 import java.util.Objects;
 
-public class GeoPoint {
+public class GeoPoint implements ObjectExistenceCheckIn {
 
     private int id;
     private String name;
     private Double latitude;
     private Double longitude;
+
+    private final static String DATA_BASE_TABLE_NAME = "geolocation_point";
 
     public GeoPoint() {
     }
@@ -17,6 +21,9 @@ public class GeoPoint {
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
+    }
+    public String getDataBaseTableName(){
+        return  DATA_BASE_TABLE_NAME;
     }
 
     public int getId() {

@@ -2,6 +2,8 @@ package com.taxi.model.dao.user;
 
 import com.taxi.controller.exceptions.ObjectNotFoundException;
 import com.taxi.controller.exceptions.NonUniqueObjectException;
+import com.taxi.model.dao.ObjectExistenceCheckIn;
+import com.taxi.model.entity.Car;
 import com.taxi.model.entity.Role;
 import com.taxi.model.entity.User;
 import com.taxi.util.PasswordEncoder;
@@ -83,6 +85,7 @@ public class UserDaoImpl implements UserDao {
         return user;
 
     }
+
 
 
 

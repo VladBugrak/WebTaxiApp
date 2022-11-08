@@ -1,12 +1,13 @@
 package com.taxi.model.entity;
 
+import com.taxi.model.dao.ObjectExistenceCheckIn;
 import com.taxi.util.PasswordEncoder;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class User {
+public class User implements ObjectExistenceCheckIn {
 
     private int id;
 
@@ -18,9 +19,13 @@ public class User {
 
     private List<Role> roleList = new ArrayList<Role>();
 
-
+    private final static String DATA_BASE_TABLE_NAME = "users";
 
     public User() {
+    }
+
+    public String getDataBaseTableName(){
+        return  DATA_BASE_TABLE_NAME;
     }
 
 
