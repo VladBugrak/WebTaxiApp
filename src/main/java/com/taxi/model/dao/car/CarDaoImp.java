@@ -144,25 +144,11 @@ public class CarDaoImp implements CarDao {
 
     }
 
-    private void testExistence(){
-
-        for (int i = 0;  i < 30; i++) {
-            Car car = new Car();
-            car.setId(i);
-
-            boolean isExist = ObjectExistenceCheckIn.isExist(car,connection);
-            System.out.println("" + i + " " + isExist);
-
-        }
-
-    }
-
-
 
     @Override
     public Car findById(int id) {
 
-        testExistence();
+
 
        final String QUERY  = SEARCHING_QUERY + "where c.id=?";
 

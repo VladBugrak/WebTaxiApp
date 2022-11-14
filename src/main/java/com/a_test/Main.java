@@ -31,9 +31,10 @@ public class Main {
         CarStatusDoa carStatusDoa = daoFactory.createCarStatusDao();
 
 
+        User user = userDao.findById(9);
+        System.out.println(user);
 
-        Car car = carDao.findById(1);
-        System.out.println(car);
+
 
 
 

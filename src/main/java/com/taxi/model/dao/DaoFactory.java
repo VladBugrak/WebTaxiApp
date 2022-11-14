@@ -1,5 +1,7 @@
 package com.taxi.model.dao;
 
+import com.taxi.model.dao.order.OrderDao;
+import com.taxi.model.dao.order.OrderDaoImp;
 import com.taxi.model.dao.tariff.TariffDao;
 import com.taxi.model.dao.tariff.TariffDaoImp;
 import com.taxi.model.dao.car.CarDao;
@@ -18,10 +20,12 @@ import com.taxi.model.dao.user.UserDao;
 import com.taxi.model.dao.user.UserDaoImpl;
 import com.taxi.model.dao.user_role.UserRoleDao;
 import com.taxi.model.dao.user_role.UserRoleDaoImp;
+import com.taxi.model.entity.Order;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 public class DaoFactory extends DaoFactoryAbstract {
 
@@ -94,6 +98,12 @@ public class DaoFactory extends DaoFactoryAbstract {
         }
     }
 
+    private class InnerOrderDaoImp extends OrderDaoImp {
+        InnerOrderDaoImp(Connection connection) {
+            super(connection);
+        }
+    }
+
 
 
 
@@ -139,5 +149,8 @@ public class DaoFactory extends DaoFactoryAbstract {
         return new InnerCarStatusDoaImp(getConnection());
     }
 
+    public OrderDao createOrderDao(){
+       return new InnerOrderDaoImp(getConnection());
+    }
 
 }

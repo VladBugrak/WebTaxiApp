@@ -1,5 +1,6 @@
 package com.taxi.model.dao;
 
+import com.taxi.model.dao.order.OrderDao;
 import com.taxi.model.dao.tariff.TariffDao;
 import com.taxi.model.dao.car.CarDao;
 import com.taxi.model.dao.car_category.CarCategoryDao;
@@ -34,6 +35,7 @@ public abstract class DaoFactoryAbstract {
 
     public abstract CarStatusDoa createCarStatusDao();
 
+    public abstract OrderDao createOrderDao();
 
 
     public static DaoFactoryAbstract getInstance(){
