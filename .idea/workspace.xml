@@ -10,18 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5ac6ee45-af90-4b8c-90f8-b8922338237b" name="Changes" comment="dao 1.0.5.8">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/order/OrderDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/order/OrderDaoImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/entity/OrderStatus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/a_test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/a_test/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/DaoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/DaoFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/DaoFactoryAbstract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/DaoFactoryAbstract.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/car/CarDaoImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/car/CarDaoImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/user_role/UserRoleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/user_role/UserRoleDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/user_role/UserRoleDaoImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/dao/user_role/UserRoleDaoImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/entity/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/entity/UserRole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/taxi/model/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/taxi/model/entity/Order.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +29,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="InvalidFacetManager">
+    <ignored-facets>
+      <facet id="WebTaxiApp/invalid/Web" />
+    </ignored-facets>
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -60,7 +56,8 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/VlaDan/IdeaProjects/WebTaxiApp&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;DatabaseDriversLRU&quot;: [
@@ -210,6 +207,9 @@
       <workItem from="1667862268918" duration="26597000" />
       <workItem from="1667949391610" duration="14258000" />
       <workItem from="1668424023103" duration="5586000" />
+      <workItem from="1668903188949" duration="1187000" />
+      <workItem from="1668910029070" duration="1079000" />
+      <workItem from="1668947846956" duration="992000" />
     </task>
     <task id="LOCAL-00001" summary="dao 1.0.0">
       <created>1666736865878</created>

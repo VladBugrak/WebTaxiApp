@@ -3,7 +3,6 @@ package com.taxi.model.entity;
 import com.taxi.model.dao.ObjectExistenceCheckIn;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 public class Order implements ObjectExistenceCheckIn {
 
@@ -13,11 +12,13 @@ public class Order implements ObjectExistenceCheckIn {
     private GeoPoint departurePoint;
     private GeoPoint destinationPoint;
     private double distance;
-    private int cost;
+    private double cost;
     private String costCalculation;
     private CarCategory category;
     private int numberOfPassengers;
+    private Discount discount;
     private Car car;
+    private Tariff tariff;
     private final static String DATA_BASE_TABLE_NAME = "orders";
 
     public Order() {
